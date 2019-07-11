@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name" translatable="false">Semargres for Merchant</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="runtime_permissions_txt" translatable="false">Please enable requested service</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="text_my_qr_code" translatable="false">Tunjukan QR Code ini kepada pelanggan yang sudah Melakukan transaksi untuk mendapatkan E-Kupon</string>
+    <string name="title_activity_create_quiz" translatable="false">CreateQuizActivity</string>
+    <string name="tab_text_1" translatable="false">Tab 1</string>
+    <string name="tab_text_2" translatable="false">Tab 2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    <string-array name="arr_jumlah_tiket">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_default">
+
+    <LinearLayout
+        android:id="@+id/layout_namaVoucher"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/namaVoucher"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Voucher Makan" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/jmlVoucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_namaVoucher"
+        android:textSize="14sp"
+        tools:text="200" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_namaVoucher"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@id/jmlVoucher"
+        android:text="voucher"
+        android:textSize="14sp"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@id/jmlVoucher" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_default"
+        android:layout_toRightOf="@id/layout_namaVoucher"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_toEndOf="@id/layout_namaVoucher">
+
+        <TextView
+            android:id="@+id/nominalVoucher"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Rp 50.000" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/deleteVoucher"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/close"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

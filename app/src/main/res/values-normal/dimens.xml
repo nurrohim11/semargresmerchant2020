@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="textSizeIsianLogin" tools:ignore="MissingDefaultResource">15dp</dimen>
+    <dimen name="widthBtnLogin" tools:ignore="MissingDefaultResource">150dp</dimen>
+    <dimen name="heightBtnLogin" tools:ignore="MissingDefaultResource">50dp</dimen>
+    <dimen name="textBtnLogin" tools:ignore="MissingDefaultResource">20sp</dimen>
+    <dimen name="textPenjualanDanSisaKupon" tools:ignore="MissingDefaultResource">15dp</dimen>
+    <dimen name="gambarMenuUtama" tools:ignore="MissingDefaultResource">45dp</dimen>
+    <dimen name="textMenuUtama" tools:ignore="MissingDefaultResource">14sp</dimen>
+    <dimen name="gambarTombolUtama" tools:ignore="MissingDefaultResource">30dp</dimen>
+    <dimen name="textTombolUtama" tools:ignore="MissingDefaultResource">13dp</dimen>
+    <dimen name="textSettingPromo" tools:ignore="MissingDefaultResource">13sp</dimen>
+    <dimen name="textEditTextSettingPromo" tools:ignore="MissingDefaultResource">20sp</dimen>
+    <dimen name="widthBtnSimpan" tools:ignore="MissingDefaultResource">160dp</dimen>
+    <dimen name="heightBtnSimpan" tools:ignore="MissingDefaultResource">40dp</dimen>
+    <dimen name="judulQrCode" tools:ignore="MissingDefaultResource">20sp</dimen>
+    <dimen name="textContainsDataQrCode" tools:ignore="MissingDefaultResource">14sp</dimen>
+    <dimen name="textJudulKuponQrCode" tools:ignore="MissingDefaultResource">14sp</dimen>
+    <dimen name="textJumlahKupon" tools:ignore="MissingDefaultResource">130sp</dimen>
+    <dimen name="heightImageView" tools:ignore="MissingDefaultResource">150dp</dimen>
+    <dimen name="marginBottomFooterSplashScreen" tools:ignore="MissingDefaultResource">30dp</dimen>
+</resources>

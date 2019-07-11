@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="20"
+    tools:context="gmedia.net.id.semargres2019merchant.voucher.SettingVoucherActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/color_orange_new"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/back" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="Setting Voucher"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:padding="@dimen/margin_default">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtSoalKuis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah Voucher"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDetailSoalKuis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtSoalKuis"
+                    android:text="Jumlah voucher yang akan diberikan kepada user"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/edtSoalKuis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtDetailSoalKuis"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:hint="100"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/txtNamaVoucher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtSoalKuis"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:text="Nama Voucher"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDetailNamaVoucher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtNamaVoucher"
+                    android:text="Tulis nama voucher yang Anda kehendaki"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/edtNamaVoucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtDetailNamaVoucher"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:hint="Voucher Makan" />
+
+                <TextView
+                    android:id="@+id/txtPeriodeKuis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtNamaVoucher"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:text="Periode"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDetailPeriodeKuis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtPeriodeKuis"
+                    android:text="Masa berlaku voucher"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/txtDetailPeriodeKuis"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@id/imgStartDate"
+                    android:textSize="16sp"
+                    android:layout_toStartOf="@id/imgStartDate" />
+
+                <ImageView
+                    android:id="@+id/imgStartDate"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/txtDetailPeriodeKuis"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/kalendericon"
+                    android:layout_marginStart="10dp"
+                    android:layout_alignParentEnd="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/startDate"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/color_black" />
+
+                <TextView
+                    android:id="@+id/endDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/startDate"
+                    android:layout_marginTop="30dp"
+                    android:layout_toLeftOf="@id/imgEndDate"
+                    android:textSize="16sp"
+                    android:layout_toStartOf="@id/imgEndDate" />
+
+                <ImageView
+                    android:id="@+id/imgEndDate"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/startDate"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/kalendericon"
+                    android:layout_marginStart="10dp"
+                    android:layout_alignParentEnd="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/endDate"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/color_black" />
+
+                <TextView
+                    android:id="@+id/txtNilaiVoucher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/endDate"
+                    android:layout_marginTop="20dp"
+                    android:text="Nilai Voucher"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDetailNilaiVoucher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtNilaiVoucher"
+                    android:text="Pilih nominal rupiah atau persen"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <Spinner
+                    android:id="@+id/sp_pilihan_voucher"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/txtDetailNilaiVoucher"
+                    android:layout_marginTop="@dimen/margin_default" />
+
+                <EditText
+                    android:id="@+id/edtNilaiVoucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtDetailNilaiVoucher"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:layout_toRightOf="@id/sp_pilihan_voucher"
+                    android:hint="Masukkan nominal"
+                    android:inputType="number"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/sp_pilihan_voucher" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/saveVoucher"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="-30dp"
+        android:background="@drawable/background_button_orange"
+        android:text="Tambahkan Voucher"
+        android:textAllCaps="false"
+        android:textColor="@color/color_white" />
+</LinearLayout>

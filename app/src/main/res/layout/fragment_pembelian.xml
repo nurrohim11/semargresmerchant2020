@@ -1,0 +1,294 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="gmedia.net.id.semargres2019merchant.tiketKonser.pembelian.PembelianFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_konser"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIK"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Masukkan NIK"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/txt_NIK"
+                android:theme="@style/BlackTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Masukkan nama"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/txt_namaTiket"
+                android:theme="@style/BlackTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Masukkan email"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/txt_emailTiket"
+                android:theme="@style/BlackTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Nomor Whatsapp"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Masukkan nomor Whatsapp (opsional, link tiket akan dikirim ke nomor tersebut)"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/txt_whatsapp"
+                android:theme="@style/BlackTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/lbl_jenis_tiket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Jenis Tiket"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Pilih jenis tiket yang akan dipesan"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spn_jenis"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp5" />
+
+            <TextView
+                android:id="@+id/txt_denah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp5"
+                android:textSize="@dimen/sp14"
+                android:textColor="@color/color_orange_new"
+                android:text="Lihat denah konser" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Jumlah Tiket"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Tentukan jumlah tiket"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spn_jumlah"
+                android:layout_width="@dimen/edit_text_jumlah_size"
+                android:padding="@dimen/dp5"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp14"
+                android:entries="@array/arr_jumlah_tiket"/>
+
+            <!--<EditText
+                android:id="@+id/txt_jumlah"
+                android:layout_width="@dimen/edit_text_jumlah_size"
+                android:layout_height="wrap_content"
+                android:inputType="number" />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Kode Promo"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:text="Masukkan kode promo (opsional)"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txt_kodePromo"
+                    android:theme="@style/BlackTheme"
+                    android:layout_width="@dimen/edit_text_jumlah_size"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+                <Button
+                    android:id="@+id/btn_cekKode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_button_orange"
+                    android:text="Cek Kode"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Kode Referral"
+                android:textSize="@dimen/sp14"
+                android:textColor="@color/color_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masukkan kode referral"
+                android:textStyle="italic"
+                android:textSize="@dimen/sp14"
+                android:layout_marginBottom="@dimen/dp5"/>
+
+            <EditText
+                android:id="@+id/txt_referral"
+                android:theme="@style/BlackTheme"
+                android:layout_width="@dimen/edit_text_jumlah_size"
+                android:inputType="text"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Diskon yang diperoleh"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:id="@+id/txt_diskonPromo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="Harga Total"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:id="@+id/txt_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_beli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp30"
+                android:background="@drawable/style_rectangle_rounded_gradient_orange"
+                android:text="Bayar"
+                android:textColor="@color/color_white" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

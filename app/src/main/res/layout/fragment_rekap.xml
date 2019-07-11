@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gmedia.net.id.semargres2019merchant.tiketKonser.rekap.RekapFragment">
+
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp10">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:textStyle="bold"
+            android:textColor="@color/color_black"
+            android:text="Periode"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp10">
+
+            <TextView
+                android:id="@+id/txt_datestart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp14"
+                android:gravity="center"
+                android:textColor="@color/color_black"
+                android:layout_weight="0.3"/>
+
+            <ImageView
+                android:id="@+id/btn_datestart"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/icon_size"
+                android:layout_weight="0.1"
+                android:layout_margin="@dimen/dp5"
+                android:src="@drawable/ic_calender"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="@dimen/dp1"
+                android:background="#DEDEDE"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/txt_dateend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp14"
+                android:gravity="center"
+                android:textColor="@color/color_black"
+                android:layout_weight="0.3"/>
+
+            <ImageView
+                android:id="@+id/btn_dateend"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/icon_size"
+                android:layout_weight="0.1"
+                android:layout_margin="@dimen/dp5"
+                android:src="@drawable/ic_calender"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_proses"
+            android:layout_width="@dimen/default_button_width"
+            android:layout_height="@dimen/default_button_height"
+            android:background="@drawable/style_rectangle_rounded_gradient_orange"
+            android:text="Proses"
+            android:textSize="@dimen/sp10"
+            android:textColor="@color/color_white"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/dp10"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_rekap"
+        android:layout_below="@id/layout_header"
+        android:layout_above="@id/layout_footer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/dp10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="@dimen/sp16"
+            android:textColor="@color/color_black"/>
+
+        <TextView
+            android:id="@+id/txt_total"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="@dimen/sp16"
+            android:textStyle="bold"
+            android:textColor="@color/color_black"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

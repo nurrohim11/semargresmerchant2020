@@ -1,0 +1,14 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gmedia.net.id.semargres2019merchant.tiketKonser.history.HistoryTiketFragment"
+    android:padding="@dimen/dp15">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_historyTiketKonser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="@dimen/default_scrollbar"/>
+
+</LinearLayout>

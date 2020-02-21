@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gmedia.net.id.semargres2019merchant.kuis.KuisActivity">
+    tools:context=".kuis.KuisActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -28,7 +28,7 @@
             android:background="#ffffff"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/color_black"
+            app:tabSelectedTextColor="@color/color_orange_new"
             app:tabTextColor="@color/color_black" />
     </android.support.design.widget.AppBarLayout>
 

@@ -34,7 +34,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:textColor="#ff9700"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -57,7 +57,7 @@
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Nama"
+                       android:text="Nama Pembeli"
                        android:textSize="@dimen/default_label" />
 
                    <TextView
@@ -65,6 +65,7 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:textColor="#000000"
+                       android:textStyle="bold"
                        android:textSize="16sp" />
                </LinearLayout>
 
@@ -87,6 +88,7 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:textColor="#000000"
+                       android:textStyle="bold"
                        android:textSize="16sp" />
                </LinearLayout>
 
@@ -118,35 +120,58 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
+                        android:textStyle="bold"
                         android:textSize="16sp" />
                 </LinearLayout>
-
                 <LinearLayout
-                    android:id="@+id/layoutWaktu"
+                    android:id="@+id/layoutPemberi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Waktu Transaksi"
+                        android:text="Diberikan Oleh"
+                        android:layout_marginTop="@dimen/margin_small"
                         android:textSize="@dimen/default_label" />
 
                     <TextView
-                        android:id="@+id/tv_jam"
+                        android:id="@+id/tv_pemberi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
+                        android:textStyle="bold"
                         android:textSize="16sp" />
                 </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layoutWaktu"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.4"-->
+<!--                    android:layout_marginTop="@dimen/margin_small"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Waktu Transaksi"-->
+<!--                        android:textSize="@dimen/default_label" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_jam"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#000000"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="16sp" />-->
+<!--                </LinearLayout>-->
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layoutPemberi"
+                android:id="@+id/layoutWaktu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/layout_bawah"
@@ -156,14 +181,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diberikan Oleh"
+                    android:text="Waktu Transaksi"
                     android:textSize="@dimen/default_label" />
 
                 <TextView
-                    android:id="@+id/tv_pemberi"
+                    android:id="@+id/tv_jam"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
+                    android:textStyle="bold"
                     android:textSize="16sp" />
             </LinearLayout>
 

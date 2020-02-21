@@ -57,23 +57,6 @@
                 android:weightSum="2"
                 android:baselineAligned="false">
 
-                <RelativeLayout
-                    android:id="@+id/logoutYa"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_tombol_popup_logout"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="YA"
-                        android:textColor="#f1b027"
-                        android:textSize="20sp" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/logoutTidak"
@@ -88,6 +71,24 @@
                         android:layout_centerInParent="true"
                         android:text="TIDAK"
                         android:textColor="#e40112"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/logoutYa"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_tombol_popup_logout"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="YA"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="20sp" />
                 </RelativeLayout>
             </LinearLayout>

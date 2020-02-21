@@ -3,109 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gmedia.net.id.semargres2019merchant.kategoriKupon.SettingKategoriKuponActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".kategoriKupon.SettingKategoriKuponActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/ToolbarTheme"
+            app:title="Kategori E-Kupon"
+            app:subtitleTextColor="@color/color_white"
+            app:titleTextColor="@color/color_white" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="20">
-
+        android:layout_below="@+id/appbar">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="@color/color_orange_new"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/back"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/back" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_kupon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="Kategori E-Kupon"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
+            </android.support.v7.widget.RecyclerView>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="18"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:weightSum="6">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:orientation="vertical"
-                android:weightSum="13">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_kupon"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="10.5">
-
-                </android.support.v7.widget.RecyclerView>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2">
-
-                    <Button
-                        android:id="@+id/iv_tambah_kupon"
-                        android:layout_width="300dp"
-                        android:layout_height="40dp"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/background_button_orange"
-                        android:text="Tambah Kategori E-Kupon"
-                        android:textAllCaps="false"
-                        android:textColor="#ffffff" />
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5" />
-
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_6sdp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/iv_tambah_kupon"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/background_button_orange"
+                android:text="Tambah Kategori E-Kupon"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

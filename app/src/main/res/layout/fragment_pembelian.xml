@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="gmedia.net.id.semargres2019merchant.tiketKonser.pembelian.PembelianFragment">
+    tools:context="gmedia.net.id.semargres2020merchant.gmedia.net.id.semargres2020merchant.tiketKonser.pembelian.PembelianFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

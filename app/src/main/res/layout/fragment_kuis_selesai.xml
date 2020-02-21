@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/margin_default"
-    tools:context="gmedia.net.id.semargres2019merchant.kuis.selesai.KuisSelesaiFragment">
+    tools:context="kuis.selesai.KuisSelesaiFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,11 +17,11 @@
 
         <Button
             android:id="@+id/btn_selesai"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/_210sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_margin="16dp"
             android:background="@drawable/background_button_orange"
             android:text="Tambahkan Kuis"
             android:textAllCaps="false"

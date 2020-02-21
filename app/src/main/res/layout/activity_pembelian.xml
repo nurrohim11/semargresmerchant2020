@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gmedia.net.id.semargres2019merchant.tiketKonser.gaDipake.PembelianActivity">
+    tools:context="gmedia.net.id.semargres2020merchant.gmedia.net.id.semargres2020merchant.tiketKonser.gaDipake.PembelianActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="gmedia.net.id.semargres2019merchant">
+    package="gmedia.net.id.semargres2020merchant">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -28,15 +28,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".tiketKonser.GambarDenahActivity"
+        <activity android:name="gmedia.net.id.semargres2020merchant.tiketKonser.GambarDenahActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".tiketKonser.gaDipake.PembelianActivity"
+            android:name="gmedia.net.id.semargres2020merchant.tiketKonser.gaDipake.PembelianActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".tiketKonser.KonserActivity"
+            android:name="gmedia.net.id.semargres2020merchant.tiketKonser.KonserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -51,39 +51,40 @@
         </provider>
 
         <activity
-            android:name=".kuis.selesai.DetailKuisSelesaiActivity"
+            android:name="gmedia.net.id.semargres2020merchant.kuis.selesai.DetailKuisSelesaiActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".kuis.berlangsung.DetailKuisBerlangsungActivity"
+            android:name="gmedia.net.id.semargres2020merchant.kuis.berlangsung.DetailKuisBerlangsungActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".kuis.KuisActivity"
+            android:name="gmedia.net.id.semargres2020merchant.kuis.KuisActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".kuis.CreateQuizActivity"
+            android:name="gmedia.net.id.semargres2020merchant.kuis.CreateQuizActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="gmedia.net.id.semargres2020merchant.akun.TambahAkunActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".akun.TambahAkunActivity"
+            android:name="gmedia.net.id.semargres2020merchant.voucher.SettingVoucherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".voucher.SettingVoucherActivity"
+            android:name="gmedia.net.id.semargres2020merchant.voucher.VoucherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".voucher.VoucherActivity"
+            android:name="gmedia.net.id.semargres2020merchant.kategoriKupon.SettingKategoriKuponActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".kategoriKupon.SettingKategoriKuponActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SplashScreen"
+            android:name="gmedia.net.id.semargres2020merchant.SplashScreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -93,43 +94,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name="gmedia.net.id.semargres2020merchant.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name="gmedia.net.id.semargres2020merchant.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".promo.CreatePromoActivity"
+            android:name="gmedia.net.id.semargres2020merchant.promo.CreatePromoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".promo.SettingPromoActivity"
+            android:name="gmedia.net.id.semargres2020merchant.promo.SettingPromoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".BerhasilQrCodeActivity"
+            android:name="gmedia.net.id.semargres2020merchant.BerhasilQrCodeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Profile"
+            android:name="gmedia.net.id.semargres2020merchant.Profile"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".historyPenjualan.HistoryPenjualanActivity"
+            android:name="gmedia.net.id.semargres2020merchant.historyPenjualan.HistoryPenjualanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".promo.EditPromoActivity"
+            android:name="gmedia.net.id.semargres2020merchant.promo.EditPromoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".MyQRCode"
+            android:name="gmedia.net.id.semargres2020merchant.MyQRCode"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
@@ -145,7 +146,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".akun.ListAkunActivity"
+            android:name="gmedia.net.id.semargres2020merchant.akun.ListAkunActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

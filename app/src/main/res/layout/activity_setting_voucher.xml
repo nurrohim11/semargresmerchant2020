@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="20"
-    tools:context="gmedia.net.id.semargres2019merchant.voucher.SettingVoucherActivity">
+    tools:context="gmedia.net.id.semargres2020merchant.gmedia.net.id.semargres2020merchant.voucher.SettingVoucherActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gmedia.net.id.semargres2019merchant.tiketKonser.rekap.RekapFragment">
+    tools:context="gmedia.net.id.semargres2020merchant.gmedia.net.id.semargres2020merchant.tiketKonser.rekap.RekapFragment">
 
     <LinearLayout
         android:id="@+id/layout_header"

@@ -2,132 +2,142 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/margin_default">
-
-    <ImageView
-        android:id="@+id/btn_next"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_chevron_right_black" />
-
-    <TextView
-        android:id="@+id/txt_soalBerlangsung"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:layout_toStartOf="@id/btn_next"
-        android:layout_toLeftOf="@id/btn_next"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="Tahukan kamu ruangan rumah sakit apa yang paling ditakuti?" />
+    android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:id="@+id/layout_periode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_soalBerlangsung"
-        android:layout_marginBottom="@dimen/margin_small">
-
-        <TextView
-            android:id="@+id/txt_periode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Periode : " />
-
-        <TextView
-            android:id="@+id/txt_startBerlangsung"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/txt_periode"
-            android:layout_toRightOf="@id/txt_periode"
-            tools:text="31-01-2020" />
-
-        <TextView
-            android:id="@+id/txt_tandaBerlangsung"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/txt_startBerlangsung"
-            android:layout_toRightOf="@id/txt_startBerlangsung"
-            android:text=" - " />
-
-        <TextView
-            android:id="@+id/txt_endBerlangsung"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/txt_tandaBerlangsung"
-            android:layout_toRightOf="@id/txt_tandaBerlangsung"
-            tools:text="31-10-2020" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_pemenang"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_periode"
-        android:layout_toStartOf="@id/btn_next"
-        android:layout_toLeftOf="@id/btn_next">
+        android:orientation="vertical"
+        android:padding="@dimen/margin_default"
+        android:id="@+id/rl_container">
+
+        <ImageView
+            android:id="@+id/btn_next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chevron_right_black" />
 
         <TextView
-            android:id="@+id/txt_pemenang"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_soalBerlangsung"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pemenang"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_namaPemenang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_pemenang"
-            android:textColor="@color/color_orange_new"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_toStartOf="@id/btn_next"
+            android:layout_toLeftOf="@id/btn_next"
+            android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="Mohammad Arif Muttaqin" />
+            tools:text="Tahukan kamu ruangan rumah sakit apa yang paling ditakuti?" />
 
         <LinearLayout
-            android:id="@+id/layout_email"
-            android:layout_width="match_parent"
+            android:id="@+id/layout_periode"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_namaPemenang">
+            android:layout_below="@id/txt_soalBerlangsung"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/margin_small">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
+                android:id="@+id/txt_periode"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
-                android:textColor="@color/color_black"/>
+                android:text="Periode : " />
 
             <TextView
-                android:id="@+id/txt_email"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content" />
+                android:id="@+id/txt_startBerlangsung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="31-01-2020" />
 
+            <TextView
+                android:id="@+id/txt_tandaBerlangsung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:text=" s/d " />
+
+            <TextView
+                android:id="@+id/txt_endBerlangsung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="31-10-2020" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_telepon"
+        <RelativeLayout
+            android:id="@+id/layout_pemenang"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layout_email">
+            android:layout_below="@id/layout_periode"
+            android:layout_toStartOf="@id/btn_next"
+            android:layout_toLeftOf="@id/btn_next">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
+                android:id="@+id/txt_pemenang"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Telepon"
-                android:textColor="@color/color_black"/>
+                android:text="Pemenang"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_telepon"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content" />
+                android:id="@+id/txt_namaPemenang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_pemenang"
+                android:textColor="@color/color_orange_new"
+                android:textStyle="bold"
+                tools:text="Mohammad Arif Muttaqin" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_namaPemenang">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/color_black"/>
+
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.75"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_telepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_email">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"
+                    android:text="Telepon"
+                    android:textColor="@color/color_black"/>
+
+                <TextView
+                    android:id="@+id/txt_telepon"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.75"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignBottom="@+id/rl_container"
+        android:background="#B4E9E2E2" />
 </RelativeLayout>

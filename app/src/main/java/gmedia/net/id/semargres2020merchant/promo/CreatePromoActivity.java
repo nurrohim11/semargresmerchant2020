@@ -50,7 +50,6 @@ public class CreatePromoActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CreatePromoActivity.this);
         rvView.setLayoutManager(layoutManager);
 
-        prepareDataViewPromo();
 
 //        RelativeLayout back = findViewById(R.id.back);
 //        back.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +128,12 @@ public class CreatePromoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResume() {
+        prepareDataViewPromo();
+        super.onResume();
+    }
+
     private void prepareDataViewPromo() {
         showProgressDialog();
         new ApiVolley(this, new JSONObject(), "GET", URL.urlViewPromo, "", "", 0, new ApiVolley.VolleyCallback() {
@@ -196,10 +201,10 @@ public class CreatePromoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(CreatePromoActivity.this, HomeActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(CreatePromoActivity.this, HomeActivity.class);
+//        startActivity(i);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void showProgressDialog(){

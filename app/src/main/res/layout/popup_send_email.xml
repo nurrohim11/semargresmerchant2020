@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/layoutPopUp"
-        android:layout_width="300dp"
-        android:layout_height="500dp"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_400sdp"
         android:layout_centerInParent="true"
         android:background="@drawable/background_popup_setting_kupon"
         android:orientation="vertical"
@@ -14,23 +15,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2.5"
+            android:layout_height="@dimen/_75sdp"
             android:background="@drawable/background_yellow"
             android:orientation="vertical"
             android:weightSum="1">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.95"
+                android:layout_height="@dimen/_70sdp"
                 android:background="@drawable/background_orange">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/margin_medium"
                     android:text="Kalkulator E-Kupon By Email"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -39,13 +40,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="@dimen/margin_default"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginRight="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:layout_weight="7.4"
-            android:background="#FFFFFF">
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/_12sdp"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:background="@drawable/background_popup_setting_kupon">
 
             <LinearLayout
                 android:id="@+id/ll_top"
@@ -103,6 +103,7 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
+
                 <RelativeLayout
                     android:id="@+id/btnCancel"
                     android:layout_width="70dp"
@@ -120,7 +121,6 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
             </RelativeLayout>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -132,7 +132,36 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:layout_marginBottom="@dimen/margin_default"
                     android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ll_merchant"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Merchant"
+                            android:textColor="@color/color_black"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:background="@drawable/bg_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:ignore="UselessParent">
+                            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:spinnerMode="dropdown"
+                                android:backgroundTint="#000"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:id="@+id/sp_merchant"/>
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <!--Kategori-->
                     <TextView
@@ -144,11 +173,18 @@
                         android:textColor="@color/color_black"
                         android:textSize="12sp" />
 
-                    <Spinner
-                        android:id="@+id/sp_kategori_email"
+                    <LinearLayout
+                        android:background="@drawable/bg_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_tiny" />
+                        tools:ignore="UselessParent">
+                        <Spinner
+                            android:id="@+id/sp_kategori_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#000"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+                    </LinearLayout>
                     <!--Kategori-->
 
                     <LinearLayout
@@ -190,11 +226,18 @@
                         android:textColor="@color/color_black"
                         android:textSize="12sp" />
 
-                    <Spinner
-                        android:id="@+id/sp_cara_bayar_email"
+                    <LinearLayout
+                        android:background="@drawable/bg_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_tiny" />
+                        tools:ignore="UselessParent">
+                        <Spinner
+                            android:id="@+id/sp_cara_bayar_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#000"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

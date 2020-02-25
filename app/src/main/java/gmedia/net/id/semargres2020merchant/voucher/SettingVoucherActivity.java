@@ -8,7 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -70,13 +72,20 @@ public class SettingVoucherActivity extends AppCompatActivity {
         yearStart = 0;
         yearEnd = 0;
 
-        RelativeLayout back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() !=  null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
+
+//        RelativeLayout back = findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         edtJumlahVoucher = findViewById(R.id.edtSoalKuis);
         edtNamaVoucher = findViewById(R.id.edtNamaVoucher);
@@ -159,6 +168,14 @@ public class SettingVoucherActivity extends AppCompatActivity {
                 alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getCalendarFirst() {
@@ -288,7 +305,8 @@ public class SettingVoucherActivity extends AppCompatActivity {
                         /*Intent i  = new Intent(SettingVoucherActivity.this, VoucherActivity.class);
                         startActivity(i);
                         finish();*/
-                        onBackPressed();
+                        finish();
+//                        onBackPressed();
 
                     } else {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();

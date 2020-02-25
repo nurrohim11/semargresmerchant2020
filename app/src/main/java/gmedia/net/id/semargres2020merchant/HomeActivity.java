@@ -38,6 +38,7 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -766,17 +767,6 @@ public class HomeActivity extends RuntimePermissionsActivity {
 
                         getKategoriKupon(jenis, caraBayarList);
 
-//						if (jenis == 0 && caraBayarList.size() > 0) {
-//
-//							showScanBarcodeDialog(caraBayarList, new ArrayList<SettingKategoriKuponModel>());
-//						} else if (jenis == 1 && caraBayarList.size() > 0) {
-//
-//							showByEmailTrans(caraBayarList, new ArrayList<SettingKategoriKuponModel>());
-//						}
-//						else if (jenis == 2 && caraBayarList.size() > 0) {
-//                            showByWhatsappTrans(caraBayarList, new ArrayList<SettingKategoriKuponModel>());
-//                        }
-
                     } else {
                         Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
                     }
@@ -959,6 +949,13 @@ public class HomeActivity extends RuntimePermissionsActivity {
         spKategoriEmail.setAdapter(adapter2);
         spKategoriEmail.setSelection(0, true);
 
+        ArrayAdapter adapter3 = new ArrayAdapter(HomeActivity.this, R.layout.layout_simple_list, listItem2);
+        SearchableSpinner spMerchant = dialog.findViewById(R.id.sp_merchant);
+        spMerchant.setAdapter(adapter3);
+        spMerchant.setTitle("Select Merchant");
+        spMerchant.setPositiveButton("close");
+        spMerchant.setSelection(0, true);
+
         RelativeLayout btnSave = dialog.findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1051,6 +1048,14 @@ public class HomeActivity extends RuntimePermissionsActivity {
         ArrayAdapter adapter2 = new ArrayAdapter(HomeActivity.this, R.layout.layout_simple_list, listItem2);
         spKategoriWhatsapp.setAdapter(adapter2);
         spKategoriWhatsapp.setSelection(0, true);
+
+
+        ArrayAdapter adapter3 = new ArrayAdapter(HomeActivity.this, R.layout.layout_simple_list, listItem2);
+        SearchableSpinner spMerchant = dialog.findViewById(R.id.sp_merchant);
+        spMerchant.setAdapter(adapter3);
+        spMerchant.setTitle("Select Merchant");
+        spMerchant.setPositiveButton("close");
+        spMerchant.setSelection(0, true);
 
         RelativeLayout btnSave = dialog.findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {

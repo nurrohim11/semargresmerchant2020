@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,13 +46,13 @@ public class VoucherActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.statusbar));
         }
 
-        RelativeLayout back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        RelativeLayout back = findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         rvView = findViewById(R.id.rv_voucher);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(VoucherActivity.this);
@@ -68,6 +70,20 @@ public class VoucherActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getVoucher() {
@@ -128,7 +144,7 @@ public class VoucherActivity extends AppCompatActivity {
 //                        rvView.addOnScrollListener(scrollListener);
 
                     } else {
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

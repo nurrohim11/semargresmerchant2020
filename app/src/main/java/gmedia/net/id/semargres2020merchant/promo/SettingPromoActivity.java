@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -78,7 +81,7 @@ public class SettingPromoActivity extends AppCompatActivity {
         link = findViewById(R.id.urlSettingPromo);
         keterangan = findViewById(R.id.keteranganSettingPromo);
 
-        RelativeLayout utama = findViewById(R.id.layoutUtamaSettingPromo);
+        LinearLayout utama = findViewById(R.id.layoutUtamaSettingPromo);
         utama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,13 +89,20 @@ public class SettingPromoActivity extends AppCompatActivity {
             }
         });
 
-        RelativeLayout back = findViewById(R.id.backSettingPromo);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        RelativeLayout back = findViewById(R.id.backSettingPromo);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() !=  null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
         spKategori = findViewById(R.id.sp_kategori);
 
@@ -220,6 +230,14 @@ public class SettingPromoActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void getDataMerchant() {
 
         new ApiVolley(SettingPromoActivity.this, new JSONObject(), "GET", URL.urlProfile, "", "", 0, new ApiVolley.VolleyCallback() {
@@ -335,8 +353,8 @@ public class SettingPromoActivity extends AppCompatActivity {
 //                        Intent intent = new Intent(SettingPromoActivity.this, CreatePromoActivity.class);
 //                        startActivity(intent);
 //                        finish();
-                        onBackPressed();
-
+//                        onBackPressed();
+                        finish();
 //                        Toast.makeText(getApplicationContext(), message,Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
@@ -394,10 +412,10 @@ public class SettingPromoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(SettingPromoActivity.this, CreatePromoActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(SettingPromoActivity.this, CreatePromoActivity.class);
+//        startActivity(i);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void showProgressDialog() {

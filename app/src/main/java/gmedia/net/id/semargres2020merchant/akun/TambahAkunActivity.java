@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -102,13 +104,13 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
 
-        RelativeLayout back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        RelativeLayout back = findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         sp_kategori_tambah_akun = findViewById(R.id.sp_tipe_kupon);
         sp_tambah_akun = findViewById(R.id.sp_kategori_akun);
@@ -209,6 +211,21 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                 }
             }
         });
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getKategori() {
@@ -403,7 +420,9 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                     if (status.equals("200")) {
 //                        Toast.makeText(getApplicationContext(), pesan, Toast.LENGTH_LONG).show();
 
-                        startActivity(new Intent(TambahAkunActivity.this, ListAkunActivity.class));
+//                        startActivity(new Intent(TambahAkunActivity.this, ListAkunActivity.class));
+                        Intent intent=new Intent();
+                        setResult(101,intent);
                         finish();
                     } else {
                         Toast.makeText(getApplicationContext(), pesan, Toast.LENGTH_LONG).show();

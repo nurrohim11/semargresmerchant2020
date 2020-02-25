@@ -56,11 +56,14 @@ public class CreatePromoAdapter extends RecyclerView.Adapter<CreatePromoAdapter.
         CreatePromoModel selectedItem = rvData.get(position);
 
         if (selectedItem.getStatus().toLowerCase().equals("verified")) {
-            holder.judul.setTextColor(context.getResources().getColor(R.color.color_black));
+//            holder.judul.setTextColor(context.getResources().getColor(R.color.color_black));
+            holder.rvSstatus.setBackgroundResource(R.color.color_green);
         } else if (selectedItem.getStatus().toLowerCase().equals("unverify")) {
-            holder.judul.setTextColor(context.getResources().getColor(R.color.color_orange));
+            holder.rvSstatus.setBackgroundResource(R.color.color_orange);
+//            holder.judul.setTextColor(context.getResources().getColor(R.color.color_orange));
         } else {
-            holder.judul.setTextColor(context.getResources().getColor(R.color.colorAccent));
+            holder.rvSstatus.setBackgroundResource(R.color.color_red);
+//            holder.judul.setTextColor(context.getResources().getColor(R.color.colorAccent));
         }
 
         holder.judul.setText(rvData.get(position).getJudul());
@@ -87,7 +90,7 @@ public class CreatePromoAdapter extends RecyclerView.Adapter<CreatePromoAdapter.
                                     intent.putExtra("id_k", isi.getString("id_k"));
 
                                     context.startActivity(intent);
-                                    ((Activity) context).finish();
+//                                    ((Activity) context).finish();
                                 }
                             }
                         } catch (JSONException e) {
@@ -193,7 +196,7 @@ public class CreatePromoAdapter extends RecyclerView.Adapter<CreatePromoAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView judul;
         private ImageView gambar;
-        private RelativeLayout delete;
+        private RelativeLayout delete,rvSstatus;
         private LinearLayout detail;
 
         public ViewHolder(View itemView) {
@@ -202,6 +205,7 @@ public class CreatePromoAdapter extends RecyclerView.Adapter<CreatePromoAdapter.
             judul = itemView.findViewById(R.id.judulCreatePromo);
             detail = itemView.findViewById(R.id.viewDetailCreatePromo);
             delete = itemView.findViewById(R.id.deletePromo);
+            rvSstatus = itemView.findViewById(R.id.rv_status);
         }
     }
 }

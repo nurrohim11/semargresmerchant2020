@@ -58,10 +58,10 @@ public class KuisActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(KuisActivity.this, HomeActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(KuisActivity.this, HomeActivity.class);
+//        startActivity(intent);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     @Override

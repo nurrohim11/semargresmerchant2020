@@ -1,51 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutUtamaSettingPromo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_top"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:background="@color/color_orange_new"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/backEditPromo"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:clickable="true"
-            android:layout_marginStart="10dp"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/back" />
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ToolbarTheme"
+            app:title="Edit Promo"
+            app:titleTextColor="@color/color_white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="Edit Promo"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="20dp" />
-        </RelativeLayout>
-
-    </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <!--<LinearLayout-->
     <!--android:layout_width="match_parent"-->
@@ -155,15 +132,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ll_top">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/layoutUtamaEditPromo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_default"
-            android:layout_marginRight="@dimen/margin_default"
+            android:padding="@dimen/_6sdp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -320,20 +295,20 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="@dimen/margin_default">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp">
 
                 <Button
                     android:id="@+id/btnEditPromo"
-                    android:layout_width="300dp"
-                    android:layout_height="@dimen/heightBtnSimpan"
+                    android:layout_width="@dimen/_210sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/background_button_orange"
                     android:text="Simpan"
                     android:textAllCaps="false"
-                    android:textColor="#fcfdfd"
-                    android:textSize="@dimen/textBtnLogin" />
+                    android:textColor="#fcfdfd" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>

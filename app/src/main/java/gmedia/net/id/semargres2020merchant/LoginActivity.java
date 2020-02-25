@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                         String flagTiket = object.getJSONObject("response").getString("flag_jual_tiket");
                         String flagParade = object.getJSONObject("response").getString("flag_parade");
 
-                        session.createLoginSession(nama, nama, token, id, nama, flag, flagTiket, flagParade);
+                        session.createLoginSession(nama, nama, token, id, nama, flag, flagTiket, flagParade,"");
 
                         Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(i);

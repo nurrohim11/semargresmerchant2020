@@ -10,6 +10,7 @@
 
     <color name="color_white">#ffffff</color>
     <color name="color_black">#000000</color>
+    <color name="color_green">#ff669900</color>
     <color name="color_transparent">#00ffffff</color>
 
     <color name="color_orange">#F0AA06</color>

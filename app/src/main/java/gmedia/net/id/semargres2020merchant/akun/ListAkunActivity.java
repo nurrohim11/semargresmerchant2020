@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,7 +68,6 @@ public class ListAkunActivity extends AppCompatActivity {
 
         namaTenant = findViewById(R.id.txt_daftarTenant);
 
-        getDataAkun();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -88,7 +88,6 @@ public class ListAkunActivity extends AppCompatActivity {
 //            }
 //        });
 
-        prepareNamaMerchant();
 
 //        RelativeLayout home = findViewById(R.id.btnHomeCreatePromo);
 //        RelativeLayout logout = findViewById(R.id.btnLogout);
@@ -138,7 +137,7 @@ public class ListAkunActivity extends AppCompatActivity {
         ivTambahAkun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ListAkunActivity.this, TambahAkunActivity.class));
+                startActivityForResult(new Intent(ListAkunActivity.this, TambahAkunActivity.class),101);
 //                getKategoriKupon();
             }
         });
@@ -150,6 +149,22 @@ public class ListAkunActivity extends AppCompatActivity {
                 kirimSemuaQR();
             }
         });
+        getDataAkun();
+        prepareNamaMerchant();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 101){
+            getDataAkun();
+            prepareNamaMerchant();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -258,10 +273,10 @@ public class ListAkunActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(ListAkunActivity.this, HomeActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(ListAkunActivity.this, HomeActivity.class);
+//        startActivity(i);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void prepareNamaMerchant() {

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -81,13 +83,13 @@ public class EditPromoActivity extends AppCompatActivity {
             }
         });
 
-        RelativeLayout back = findViewById(R.id.backEditPromo);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        RelativeLayout back = findViewById(R.id.backEditPromo);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         pbLoading = findViewById(R.id.pb_loading);
 
@@ -139,6 +141,13 @@ public class EditPromoActivity extends AppCompatActivity {
 //                dialog.show();
 //            }
 //        });
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
         title = findViewById(R.id.titleEditPromo);
         link = findViewById(R.id.urlEditPromo);
@@ -211,6 +220,14 @@ public class EditPromoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getDataMerchant() {
@@ -362,9 +379,9 @@ public class EditPromoActivity extends AppCompatActivity {
 
 //                        Intent intent = new Intent(EditPromoActivity.this, CreatePromoActivity.class);
 //                        startActivity(intent);
-//                        finish();
+                        finish();
 
-                        onBackPressed();
+//                        onBackPressed();
 
 //                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
 
@@ -452,10 +469,10 @@ public class EditPromoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(EditPromoActivity.this, CreatePromoActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(EditPromoActivity.this, CreatePromoActivity.class);
+//        startActivity(i);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void showProgressDialog() {

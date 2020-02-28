@@ -112,7 +112,7 @@ public class KirimSmsMerActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (edtTelp.getText().toString().equals("")) {
-                    edtTelp.setError("Silahkan mengisi nomor Whatsapp");
+                    edtTelp.setError("Silahkan mengisi nomor telepon");
                     edtTelp.requestFocus();
                     return;
                 }

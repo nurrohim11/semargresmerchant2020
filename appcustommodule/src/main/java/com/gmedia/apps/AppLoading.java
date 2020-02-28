@@ -10,7 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.Window;
 
-import com.leonardus.irfan.R;
+import com.gmedia.apps.R;
 
 public class AppLoading {
     private static final AppLoading ourInstance = new AppLoading();

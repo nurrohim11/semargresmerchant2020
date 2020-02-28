@@ -19,7 +19,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +49,7 @@ import gmedia.net.id.semargres2020merchant.volunteer.SessionMerchant;
 import static gmedia.net.id.semargres2020merchant.volunteer.SessionMerchant.SP_ID_MERCHANT_SMS;
 import static gmedia.net.id.semargres2020merchant.volunteer.SessionMerchant.SP_NAMA_MERCHANT_SMS;
 
-public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapter.MerchantAdapterCallback{
+public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAdapter.MerchantAdapterCallback{
 
     Toolbar toolbar;
     TextView tvTitle;
@@ -67,8 +66,8 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
     private int start =0, count=20;
 
     private LinearLayout llSelectMerchant;
-    public static TextView tvMerchantSms;
-    private EditText edtNama, edtAlamat, edtTelp, edtNominal;
+    private TextView tvMerchantSms;
+    private EditText edtNama, edtAlamat, edtNik, edtTelp, edtNominal;
     private Button btnKirim;
     private Spinner spCaraBayar, spKategori;
 
@@ -80,7 +79,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kirim_sms);
+        setContentView(R.layout.activity_kirim_sms_vol);
         sessionMerchant = new SessionMerchant(this);
         session = new SessionManager(this);
         getCaraBayarData();
@@ -122,11 +121,12 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
         edtNama = findViewById(R.id.edt_nama);
         edtAlamat = findViewById(R.id.edt_alamat);
         edtTelp = findViewById(R.id.edt_notelp);
+        edtNik = findViewById(R.id.edt_nik);
         edtNominal = findViewById(R.id.edt_nominal);
         spCaraBayar = (Spinner) findViewById(R.id.sp_cara_bayar);
         spKategori = (Spinner) findViewById(R.id.sp_kategori);
         id_merchant = sessionMerchant.getSpIdSms();
-        getKategoriByMerchant(Integer.parseInt(id_merchant));
+        getKategoriByMerchant(id_merchant);
         btnKirim = findViewById(R.id.btn_send);
     }
 
@@ -161,7 +161,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
                 SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategori.getSelectedItem();
                 kategori_kupon = kategori.getId();
 
-                AlertDialog alertDialog = new AlertDialog.Builder(KirimSmsActivity.this)
+                AlertDialog alertDialog = new AlertDialog.Builder(KirimSmsVolActivity.this)
                         .setTitle("Konfirmasi")
                         .setMessage("Apakah Anda yakin ingin menyimpan data?")
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
@@ -207,7 +207,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        new ApiVolley(KirimSmsActivity.this, params, "POST", URL.urlAllMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
+        new ApiVolley(KirimSmsVolActivity.this, params, "POST", URL.urlAllMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 try {
@@ -247,7 +247,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
     private void showDialogMerchant(){
         merchantModels.clear();
         keyword_merchant="";
-        dgMerchant = new Dialog(KirimSmsActivity.this);
+        dgMerchant = new Dialog(KirimSmsVolActivity.this);
         dgMerchant.setContentView(R.layout.popup_merchant);
         dgMerchant.setCancelable(false);
         RelativeLayout rvCancel = dgMerchant.findViewById(R.id.rv_cancel);
@@ -308,8 +308,8 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
     }
 
     private void setupListMerchantSms() {
-        merchantAdapter = new MerchantAdapter(KirimSmsActivity.this, merchantModels,this);
-        rvMerchant.setLayoutManager(new LinearLayoutManager(KirimSmsActivity.this));
+        merchantAdapter = new MerchantAdapter(KirimSmsVolActivity.this, merchantModels,this);
+        rvMerchant.setLayoutManager(new LinearLayoutManager(KirimSmsVolActivity.this));
         rvMerchant.setAdapter(merchantAdapter);
     }
 
@@ -331,7 +331,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
 
     private void getCaraBayarData() {
 
-        new ApiVolley(KirimSmsActivity.this, new JSONObject(), "GET", URL.urlCaraBayar, "", "", 0, new ApiVolley.VolleyCallback() {
+        new ApiVolley(KirimSmsVolActivity.this, new JSONObject(), "GET", URL.urlCaraBayar, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 try {
@@ -344,7 +344,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
                             JSONObject jo = jArray.getJSONObject(i);
                             caraBayarList.add(new TwoItemModel(jo.getString("value"), jo.getString("text")));
                         }
-                        spCaraBayar.setAdapter(new ArrayAdapter<>(KirimSmsActivity.this, R.layout.layout_simple_list, caraBayarList));
+                        spCaraBayar.setAdapter(new ArrayAdapter<>(KirimSmsVolActivity.this, R.layout.layout_simple_list, caraBayarList));
                     } else {
                         Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
                     }
@@ -360,7 +360,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
         });
     }
 
-    private void getKategoriByMerchant(int id_merchant){
+    private void getKategoriByMerchant(String id_merchant){
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("id_merchant",id_merchant);
@@ -368,7 +368,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
             e.printStackTrace();
         }
 
-        new ApiVolley(KirimSmsActivity.this, jsonObject, "POST", URL.urlKategoriKuponByMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
+        new ApiVolley(KirimSmsVolActivity.this, jsonObject, "POST", URL.urlKategoriKuponByMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 kategoriKupon.clear();
@@ -384,10 +384,11 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
                             JSONObject jo = jArray.getJSONObject(i);
                             kategoriKupon.add(new SettingKategoriKuponModel(jo.getString("id"), jo.getString("nama"),jo.getString("nominal")));
                         }
-                        spKategori.setAdapter(new ArrayAdapter<>(KirimSmsActivity.this, R.layout.layout_simple_list, kategoriKupon));
-                    } else {
-                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
+                        spKategori.setAdapter(new ArrayAdapter<>(KirimSmsVolActivity.this, R.layout.layout_simple_list, kategoriKupon));
                     }
+//                    else {
+//                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
+//                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -404,7 +405,7 @@ public class KirimSmsActivity extends AppCompatActivity implements MerchantAdapt
     public void onRowMerchantAdapterClicked(String id_m, String nama) {
         spKategori.setSelection(-1);
         id_merchant = id_m;
-        getKategoriByMerchant(Integer.parseInt(id_merchant));
+        getKategoriByMerchant(id_merchant);
         sessionMerchant.saveSPString(SP_ID_MERCHANT_SMS, id_merchant);
         sessionMerchant.saveSPString(SP_NAMA_MERCHANT_SMS, nama);
         tvMerchantSms.setText(sessionMerchant.getSpNamaSms());

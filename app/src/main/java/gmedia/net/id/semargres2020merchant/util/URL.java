@@ -15,6 +15,7 @@ public class URL {
     private static final String baseURL = "https://semargres.gmedia.id/";
     public static String urlLogin = baseURL + "merchant/auth";
     public static String urlProfile = baseURL + "merchant/profile";
+    public static String urlAllMerchant = baseURL + "merchant/all_merchant";
     public static final String TAG = "semargres_log";
 
     public static Map<String, String> getHeaders(Context context){
@@ -57,6 +58,7 @@ public class URL {
 
     public static String urlStoreKategoriKupon = baseURL + "master/kategori_kupon/store";
     public static String urlKategoriKupon = baseURL + "master/kategori_kupon";
+    public static String urlKategoriKuponByMerchant = baseURL + "master/kategori_by_merchant";
     public static String urlKategoriKuponUpdate = baseURL + "master/kategori_kupon/update";
     public static String urlKategoriKuponDelete = baseURL + "master/kategori_kupon/delete";
 

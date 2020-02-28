@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".volunteer.kirimkupon.KirimEmailActivity">
+    tools:context=".volunteer.kirimkupon.KirimEmailVolActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -117,26 +117,58 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/kategoriKupon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="Kategori E-Kupon"
-                    android:textColor="@color/color_black"
-                    android:textSize="12sp" />
-
                 <LinearLayout
-                    android:background="@drawable/bg_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:ignore="UselessParent">
-                    <Spinner
-                        android:id="@+id/sp_kategori_whatsapp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/margin_default">
+                    <TextView
+                        android:id="@+id/kategoriKupon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="Kategori E-Kupon"
+                        android:textColor="@color/color_black"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:background="@drawable/bg_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#000"
-                        android:layout_marginTop="@dimen/margin_tiny" />
+                        tools:ignore="UselessParent">
+                        <Spinner
+                            android:id="@+id/sp_kategori"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#000"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NIK"
+                        android:textColor="@color/color_black"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/edt_nik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_cute"
+                        android:hint="NIK"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/color_black"
+                        android:textSize="14sp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -158,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_cute"
                         android:hint="Nama"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:singleLine="true"
                         android:textColor="@color/color_black"
                         android:textSize="14sp" />
@@ -185,10 +217,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_cute"
                         android:hint="Alamat"
-                        android:inputType="phone"
-                        android:singleLine="true"
+                        android:singleLine="false"
                         android:textColor="@color/color_black"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:inputType="textMultiLine"
+                        android:lines="8"
+                        android:minLines="1"
+                        android:maxLines="10"
+                        android:scrollbars="vertical" />
 
                 </LinearLayout>
 
@@ -201,47 +237,55 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No. Telp"
+                        android:text="Email"
                         android:textColor="@color/color_black"
                         android:textSize="12sp" />
 
                     <EditText
-                        android:id="@+id/edt_notelp"
+                        android:id="@+id/edt_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_cute"
-                        android:hint="085200001111"
-                        android:inputType="phone"
+                        android:hint="example@gmail.com"
+                        android:inputType="textEmailAddress"
                         android:singleLine="true"
                         android:textColor="@color/color_black"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:ignore="TextFields" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="Cara Bayar"
-                    android:textColor="@color/color_black"
-                    android:textSize="12sp" />
-
                 <LinearLayout
-                    android:background="@drawable/bg_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:ignore="UselessParent">
-                    <Spinner
-                        android:id="@+id/sp_cara_bayar_whatsapp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/margin_default">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="Cara Bayar"
+                        android:textColor="@color/color_black"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:background="@drawable/bg_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#000"
-                        android:layout_marginTop="@dimen/margin_tiny" />
+                        tools:ignore="UselessParent">
+                        <Spinner
+                            android:id="@+id/sp_cara_bayar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#000"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+                    </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_default"
                     android:orientation="vertical">
 
                     <TextView
@@ -272,7 +316,7 @@
                         </RelativeLayout>
 
                         <EditText
-                            android:id="@+id/isiNominalSendWhatsapp"
+                            android:id="@+id/edt_nominal"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="4.6"
@@ -286,22 +330,17 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="@dimen/_210sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/margin_default"
                     android:layout_marginBottom="@dimen/margin_default"
-                    android:orientation="vertical">
-                    <Button
-                        android:id="@+id/saveKuis"
-                        android:layout_width="@dimen/_210sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/background_button_orange"
-                        android:text="Tambahkan Kuis"
-                        android:textAllCaps="false"
-                        android:textColor="@color/color_white" />
-                </LinearLayout>
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_button_orange"
+                    android:text="Kirim"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white" />
 
             </LinearLayout>
         </ScrollView>

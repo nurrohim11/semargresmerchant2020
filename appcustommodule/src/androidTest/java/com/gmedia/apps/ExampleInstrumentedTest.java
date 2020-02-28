@@ -1,4 +1,4 @@
-package com.leonardus.irfan;
+package com.gmedia.apps;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.leonardus.irfan.test", appContext.getPackageName());
+        assertEquals("com.gmedia.apps.test", appContext.getPackageName());
     }
 }

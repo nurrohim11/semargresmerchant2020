@@ -1,4 +1,4 @@
-package gmedia.net.id.semargres2020merchant.volunteer.kirimkupon;
+package gmedia.net.id.semargres2020merchant.volunteer;
 
 import android.content.Context;
 import android.content.SharedPreferences;

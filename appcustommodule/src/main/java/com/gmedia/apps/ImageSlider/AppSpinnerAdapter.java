@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.gmedia.apps.SimpleObjectModel;
-import com.leonardus.irfan.R;
+import com.gmedia.apps.R;
 
 import java.util.List;
 

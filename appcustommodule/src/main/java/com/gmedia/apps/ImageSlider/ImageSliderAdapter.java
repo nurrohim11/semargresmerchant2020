@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
-import com.leonardus.irfan.R;
+import com.gmedia.apps.R;
 
 import java.util.ArrayList;
 import java.util.List;

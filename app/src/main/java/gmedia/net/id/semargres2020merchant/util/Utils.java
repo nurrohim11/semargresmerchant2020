@@ -7,4 +7,7 @@ public class Utils {
     public static SimpleDateFormat dateFormat(String pattern){
         return new SimpleDateFormat(pattern, Locale.getDefault());
     }
+    public static boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 }

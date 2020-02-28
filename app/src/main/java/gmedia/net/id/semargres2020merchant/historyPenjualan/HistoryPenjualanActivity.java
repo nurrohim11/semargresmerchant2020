@@ -188,42 +188,6 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
                         adapter = new HistoryPenjualanAdapter(HistoryPenjualanActivity.this, historyPenjualan);
                         rvView.setAdapter(adapter);
 
-//                        if(string == "awal"){
-//                            rvView.setAdapter(null);
-//                            adapter = new HistoryPenjualanAdapter(HistoryPenjualanActivity.this, historyBaru);
-//                            rvView.setAdapter(adapter);
-//
-//                        }
-//                        else if (string == "load"){
-//                            try {
-//                                jBody.put("start", start);
-//                                jBody.put("limit", count);
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-
-//                        for (int i = start; i < count; i++) {
-//                            if (i < historyPenjualan.size()) {
-//                                historyBaru.add(historyPenjualan.get(i));
-//                            }
-//                        }
-
-
-
-//                        EndlessScroll scrollListener = new EndlessScroll((LinearLayoutManager) layoutManager) {
-//                            @Override
-//                            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-//                                start += count;
-//                                for (int i = start; i < start + count; i++) {
-//                                    if (i < historyPenjualan.size())
-//                                        historyBaru.add(historyPenjualan.get(i));
-//                                }
-//                                adapter.addMoreData();
-//                            }
-//                        };
-//                        rvView.addOnScrollListener(scrollListener);
-
                     } else {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     }

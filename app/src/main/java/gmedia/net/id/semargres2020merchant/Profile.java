@@ -40,6 +40,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -141,6 +142,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
     private Button simpan;
     private String bitmapString = "";
     private ProgressBar pbLoading;
+    ScrollView svContainer;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -180,6 +182,10 @@ public class Profile extends AppCompatActivity implements LocationListener {
 
         diskonDiberikan = findViewById(R.id.isianDiskonDiberikan);
         diskonPengguna = findViewById(R.id.isianDiskonPengguna);
+
+        svContainer = findViewById(R.id.sv_container);
+        svContainer.setVerticalScrollBarEnabled(false);
+        svContainer.setHorizontalScrollBarEnabled(false);
 
         session = new SessionManager(getApplicationContext());
 
@@ -1322,9 +1328,6 @@ public class Profile extends AppCompatActivity implements LocationListener {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Profile.this, HomeActivity.class);
-        startActivity(intent);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 }

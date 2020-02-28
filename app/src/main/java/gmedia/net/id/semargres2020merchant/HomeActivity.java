@@ -3,6 +3,7 @@ package gmedia.net.id.semargres2020merchant;
 import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -18,14 +19,21 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +46,6 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,12 +54,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import gmedia.net.id.semargres2020merchant.R;
 import gmedia.net.id.semargres2020merchant.akun.ListAkunActivity;
+import gmedia.net.id.semargres2020merchant.merchant.KirimEmailMerActivity;
+import gmedia.net.id.semargres2020merchant.merchant.KirimScanQrMerActivity;
+import gmedia.net.id.semargres2020merchant.merchant.KirimSmsMerActivity;
+import gmedia.net.id.semargres2020merchant.volunteer.kirimkupon.KirimEmailVolActivity;
+import gmedia.net.id.semargres2020merchant.volunteer.kirimkupon.KirimScanQrVolActivity;
+import gmedia.net.id.semargres2020merchant.volunteer.kirimkupon.KirimSmsVolActivity;
+import gmedia.net.id.semargres2020merchant.volunteer.MerchantAdapter;
+import gmedia.net.id.semargres2020merchant.volunteer.MerchantModel;
 import gmedia.net.id.semargres2020merchant.historyPenjualan.HistoryPenjualanActivity;
 import gmedia.net.id.semargres2020merchant.kategoriKupon.SettingKategoriKuponActivity;
 import gmedia.net.id.semargres2020merchant.kategoriKupon.SettingKategoriKuponModel;
 import gmedia.net.id.semargres2020merchant.kuis.KuisActivity;
+import gmedia.net.id.semargres2020merchant.volunteer.SessionMerchant;
 import gmedia.net.id.semargres2020merchant.promo.CreatePromoActivity;
 import gmedia.net.id.semargres2020merchant.tiketKonser.KonserActivity;
 import gmedia.net.id.semargres2020merchant.util.ApiVolley;
@@ -94,6 +109,17 @@ public class HomeActivity extends RuntimePermissionsActivity {
     private String tanpaKostum = "Scan tanpa kostum";
     private String tiketEmail = "Tiket dengan Email";
     private String tiketScan = "Tiket dengan Scan QR Code";
+
+    public static Dialog dgMerchant;
+    private RecyclerView rvMerchant;
+    MerchantAdapter merchantAdapter;
+    private List<MerchantModel> merchantModels = new ArrayList<>();
+    private SessionMerchant sessionMerchant;
+    public static TextView tvMerchant;
+    private String keyword_merchant="";
+    private int start =0, count=20;
+
+    public static TextView tvMerchantEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -274,6 +300,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
 //                getCaraBayarData(2);
 //            }
 //        });
+
 
     }
 
@@ -694,7 +721,14 @@ public class HomeActivity extends RuntimePermissionsActivity {
         menuScanBarcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCaraBayarData(0);
+//                getCaraBayarData(0);
+//                if(session.getLevel().equals("")){
+                Intent intent = new Intent(getBaseContext(), KirimScanQrVolActivity.class);
+                startActivity(intent);
+//                }else{
+//                Intent intent = new Intent(getBaseContext(), KirimScanQrMerActivity.class);
+//                startActivity(intent);
+//                }
             }
         });
 
@@ -702,7 +736,14 @@ public class HomeActivity extends RuntimePermissionsActivity {
         menuEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCaraBayarData(1);
+//                getCaraBayarData(1);
+//                if(session.getLevel().equals("")){
+                    Intent intent = new Intent(getBaseContext(), KirimEmailVolActivity.class);
+                    startActivity(intent);
+//                }else{
+//                Intent intent = new Intent(getBaseContext(), KirimEmailMerActivity.class);
+//                startActivity(intent);
+//                }
             }
         });
 
@@ -710,7 +751,15 @@ public class HomeActivity extends RuntimePermissionsActivity {
         menuWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCaraBayarData(2);
+//                getCaraBayarData(2);
+
+//                if(session.getLevel().equals("")){
+                    Intent intent = new Intent(getBaseContext(), KirimSmsVolActivity.class);
+                    startActivity(intent);
+//                }else{
+//                    Intent intent = new Intent(getBaseContext(), KirimSmsMerActivity.class);
+//                    startActivity(intent);
+//                }
             }
         });
         dialog.show();
@@ -829,12 +878,63 @@ public class HomeActivity extends RuntimePermissionsActivity {
         }
     }
 
+    private void getAllMerchant(){
+        JSONObject params = new JSONObject();
+        try {
+            params.put("keyword",keyword_merchant);
+            params.put("start",start);
+            params.put("count",count);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        new ApiVolley(HomeActivity.this, params, "POST", URL.urlAllMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                try {
+                    JSONObject object = new JSONObject(result);
+
+                    String status = object.getJSONObject("metadata").getString("status");
+                    String message = object.getJSONObject("metadata").getString("message");
+                    if (status.equals("200")) {
+                        JSONArray arr = object.getJSONArray("response");
+                        for (int i = 0; i < arr.length(); i++) {
+                            JSONObject isi = arr.getJSONObject(i);
+                            merchantModels.add(new MerchantModel(
+                                    isi.getString("id"),
+                                    isi.getString("nama"),
+                                    isi.getString("alamat"),
+                                    isi.getString("email"),
+                                    isi.getString("deskripsi"),
+                                    isi.getString("kategori"),
+                                    isi.getString("latitude"),
+                                    isi.getString("longitude")
+                            ));
+                        }
+                        merchantAdapter.notifyDataSetChanged();
+                    }
+//                    else {
+//                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+//                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
     private void createKupon(int jenis, List<TwoItemModel> list, ArrayList<SettingKategoriKuponModel> list2) {
         if (jenis == 0 && list.size() > 0 && list2.size() > 0) {
             showScanBarcodeDialog(list, list2);
         } else if (jenis == 1 && list.size() > 0 && list2.size() > 0) {
             showByEmailTrans(list, list2);
-        } else if (jenis == 2 && list.size() > 0 && list2.size() > 0) {
+        }
+        else if (jenis == 2 && list.size() > 0 && list2.size() > 0) {
             showByWhatsappTrans(list, list2);
         }
     }
@@ -925,7 +1025,6 @@ public class HomeActivity extends RuntimePermissionsActivity {
         final Dialog dialog = new Dialog(HomeActivity.this);
         dialog.setContentView(R.layout.popup_send_email);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        // radioGroupEmail = dialog.findViewById(R.id.radioGrubEmail);
         isiEmailSendEmail = dialog.findViewById(R.id.isiEmailSendEmail);
         isiNominalSendEMail = dialog.findViewById(R.id.isiNominalSendMail);
 
@@ -949,63 +1048,131 @@ public class HomeActivity extends RuntimePermissionsActivity {
         spKategoriEmail.setAdapter(adapter2);
         spKategoriEmail.setSelection(0, true);
 
-        ArrayAdapter adapter3 = new ArrayAdapter(HomeActivity.this, R.layout.layout_simple_list, listItem2);
-        SearchableSpinner spMerchant = dialog.findViewById(R.id.sp_merchant);
-        spMerchant.setAdapter(adapter3);
-        spMerchant.setTitle("Select Merchant");
-        spMerchant.setPositiveButton("close");
-        spMerchant.setSelection(0, true);
+        LinearLayout llSelectMerchant = dialog.findViewById(R.id.ll_select_merchant_email);
+        tvMerchantEmail = dialog.findViewById(R.id.tv_merchant_email);
+        tvMerchantEmail.setText(sessionMerchant.getSpNamaEmail());
+
+        llSelectMerchant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                merchantModels.clear();
+                keyword_merchant="";
+                dgMerchant = new Dialog(HomeActivity.this);
+                dgMerchant.setContentView(R.layout.popup_merchant);
+                dgMerchant.setCancelable(false);
+                RelativeLayout rvCancel = dgMerchant.findViewById(R.id.rv_cancel);
+                rvMerchant = dgMerchant.findViewById(R.id.rv_merchant);
+//                setupListMerchantEmail();
+//                setupListScrollListenerMerchantEmail();
+                start =0;
+                count =20;
+                getAllMerchant();
+
+                final EditText edtSearchMerchant = dgMerchant.findViewById(R.id.edt_search_merchant);
+                edtSearchMerchant.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                            InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            in.hideSoftInputFromWindow(edtSearchMerchant.getWindowToken(), 0);
+                            keyword_merchant = edtSearchMerchant.getText().toString().trim();
+                            start =0;
+                            count =20;
+                            merchantModels.clear();
+                            getAllMerchant();
+                            merchantAdapter.notifyDataSetChanged();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                edtSearchMerchant.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if(edtSearchMerchant.getText().toString().length() == 0) {
+                            keyword_merchant="";
+                            start=0;
+                            count=20;
+                            getAllMerchant();
+                        }
+                    }
+                });
+
+                rvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dgMerchant.dismiss();
+                    }
+                });
+                dgMerchant.show();
+            }
+        });
 
         RelativeLayout btnSave = dialog.findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (isiEmailSendEmail.getText().toString().equals("")) {
-                    isiEmailSendEmail.setError("Silahkan mengisi email");
-                    isiEmailSendEmail.requestFocus();
+                if (tvMerchantEmail.getText().toString().equals("")) {
+                    tvMerchantEmail.setError("Silahkan pilih merchant terlebih dahulu");
+                    tvMerchantEmail.requestFocus();
                     return;
                 }
 
-                if (isiNominalSendEMail.getText().toString().equals("")) {
-                    isiNominalSendEMail.setError("Silahkan mengisi nominal belanja");
-                    isiNominalSendEMail.requestFocus();
-                    return;
-                }
-
-                IDemail = "0";
-                TwoItemModel item = (TwoItemModel) spCaraBayarEmail.getSelectedItem();
-                IDemail = item.getItem1();
-
-                kategoriEmail = "0";
-                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategoriEmail.getSelectedItem();
-                kategoriEmail = kategori.getId();
-
-//                        Toast.makeText(getApplicationContext(),String.valueOf(IDemail),Toast.LENGTH_LONG).show();
-                AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this)
-                        .setTitle("Konfirmasi")
-                        .setMessage("Apakah Anda yakin ingin menyimpan data?")
-                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (session.getFlag().equals("2")){
-                                    prepareDataSendEmailTenant();
-                                }
-                                else{
-                                    prepareDataSendEmail();
-                                }
-                            }
-                        })
-                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .show();
-                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
-
-                dialog.dismiss();
+//                if (isiEmailSendEmail.getText().toString().equals("")) {
+//                    isiEmailSendEmail.setError("Silahkan mengisi email");
+//                    isiEmailSendEmail.requestFocus();
+//                    return;
+//                }
+//
+//                if (isiNominalSendEMail.getText().toString().equals("")) {
+//                    isiNominalSendEMail.setError("Silahkan mengisi nominal belanja");
+//                    isiNominalSendEMail.requestFocus();
+//                    return;
+//                }
+//
+//                IDemail = "0";
+//                TwoItemModel item = (TwoItemModel) spCaraBayarEmail.getSelectedItem();
+//                IDemail = item.getItem1();
+//
+//                kategoriEmail = "0";
+//                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategoriEmail.getSelectedItem();
+//                kategoriEmail = kategori.getId();
+//
+//                AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this)
+//                        .setTitle("Konfirmasi")
+//                        .setMessage("Apakah Anda yakin ingin menyimpan data?")
+//                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                if (session.getFlag().equals("2")){
+//                                    prepareDataSendEmailTenant();
+//                                }
+//                                else{
+//                                    prepareDataSendEmail();
+//                                }
+//                            }
+//                        })
+//                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        })
+//                        .show();
+//                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
+//
+//                dialog.dismiss();
             }
         });
         RelativeLayout btnCancel = dialog.findViewById(R.id.btnCancel);
@@ -1015,13 +1182,41 @@ public class HomeActivity extends RuntimePermissionsActivity {
                 dialog.dismiss();
             }
         });
-//		dialog.setCanceledOnTouchOutside(false);
         dialog.show();
 
     }
 
-    private void showByWhatsappTrans(List<TwoItemModel> listItem, ArrayList<SettingKategoriKuponModel> listItem2) {
+//    private void setupListMerchantEmail() {
+//        merchantAdapter = new MerchantAdapter(HomeActivity.this, merchantModels,this);
+//        rvMerchant.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+//        rvMerchant.setAdapter(merchantAdapter);
+//    }
+//
+//    private void setupListScrollListenerMerchantEmail() {
+//        rvMerchant.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//
+//                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+//
+//                int totalItems = layoutManager.getItemCount();
+//                int visibleItems = layoutManager.getChildCount();
+//                int pastVisibleItems = layoutManager.findFirstCompletelyVisibleItemPosition();
+//
+//                if (! recyclerView.canScrollVertically(1)) {
+//                    start += count;
+//                    getAllMerchant();
+//                }
+//
+////                if (pastVisibleItems + visibleItems >= totalItems) {
+////                }
+//            }
+//        });
+//    }
 
+    private void showByWhatsappTrans(List<TwoItemModel> listItem, ArrayList<SettingKategoriKuponModel> listItem2) {
+        sessionMerchant = new SessionMerchant(this);
         final Dialog dialog = new Dialog(HomeActivity.this);
         dialog.setContentView(R.layout.popup_send_whatsapp);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1049,65 +1244,138 @@ public class HomeActivity extends RuntimePermissionsActivity {
         spKategoriWhatsapp.setAdapter(adapter2);
         spKategoriWhatsapp.setSelection(0, true);
 
+        LinearLayout llMerchant = dialog.findViewById(R.id.ll_merchant);
 
-        ArrayAdapter adapter3 = new ArrayAdapter(HomeActivity.this, R.layout.layout_simple_list, listItem2);
-        SearchableSpinner spMerchant = dialog.findViewById(R.id.sp_merchant);
-        spMerchant.setAdapter(adapter3);
-        spMerchant.setTitle("Select Merchant");
-        spMerchant.setPositiveButton("close");
-        spMerchant.setSelection(0, true);
+        if(session.getLevel().equals("")){
+            llMerchant.setVisibility(LinearLayout.INVISIBLE);
+        }else{
+            llMerchant.setVisibility(LinearLayout.VISIBLE);
+        }
+        LinearLayout llSelectMerchant = dialog.findViewById(R.id.ll_select_merchant);
+        tvMerchant = dialog.findViewById(R.id.tv_merchant);
+        tvMerchant.setText(sessionMerchant.getSpNamaSms());
+        llSelectMerchant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                merchantModels.clear();
+                keyword_merchant="";
+                dgMerchant = new Dialog(HomeActivity.this);
+                dgMerchant.setContentView(R.layout.popup_merchant);
+                dgMerchant.setCancelable(false);
+                RelativeLayout rvCancel = dgMerchant.findViewById(R.id.rv_cancel);
+                rvMerchant = dgMerchant.findViewById(R.id.rv_merchant);
+                setupListMerchantSms();
+                setupListScrollListenerMerchantSms();
+                start =0;
+                count =20;
+                getAllMerchant();
+
+                final EditText edtSearchMerchant = dgMerchant.findViewById(R.id.edt_search_merchant);
+                edtSearchMerchant.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                            InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            in.hideSoftInputFromWindow(edtSearchMerchant.getWindowToken(), 0);
+                            keyword_merchant = edtSearchMerchant.getText().toString().trim();
+                            start =0;
+                            count =20;
+                            merchantModels.clear();
+                            getAllMerchant();
+                            merchantAdapter.notifyDataSetChanged();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                edtSearchMerchant.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if(edtSearchMerchant.getText().toString().length() == 0) {
+                            keyword_merchant="";
+                            start=0;
+                            count=20;
+                            getAllMerchant();
+                        }
+                    }
+                });
+
+                rvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dgMerchant.dismiss();
+                    }
+                });
+                dgMerchant.show();
+            }
+        });
 
         RelativeLayout btnSave = dialog.findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (tvMerchant.getText().toString().equals("")) {
+                    tvMerchant.setError("Silahkan pilih merchant terlebih dahulu");
+                    tvMerchant.requestFocus();
+                    return;
+                }
+
                 if (isiWhatsapp.getText().toString().equals("")) {
                     isiWhatsapp.setError("Silahkan mengisi nomor Whatsapp");
                     isiWhatsapp.requestFocus();
                     return;
                 }
-
-                if (isiNominalSendWhatsapp.getText().toString().equals("")) {
-                    isiNominalSendWhatsapp.setError("Silahkan mengisi nominal belanja");
-                    isiNominalSendWhatsapp.requestFocus();
-                    return;
-                }
-
-                IDwhatsapp = "0";
-                TwoItemModel item = (TwoItemModel) spCaraBayarWhatsapp.getSelectedItem();
-                IDwhatsapp = item.getItem1();
-
-                kategoriWhatsapp = "0";
-                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategoriWhatsapp.getSelectedItem();
-                kategoriWhatsapp = kategori.getId();
-
-//                        Toast.makeText(getApplicationContext(),String.valueOf(IDemail),Toast.LENGTH_LONG).show();
-                AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this)
-                        .setTitle("Konfirmasi")
-                        .setMessage("Apakah Anda yakin ingin menyimpan data?")
-                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (session.getFlag().equals("2")){
-                                    prepareDataSendWhatsappTenant();
-                                }
-                                else{
-                                    prepareDataSendWhatsapp();
-                                }
-                            }
-                        })
-                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .show();
-                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
-
-
-                dialog.dismiss();
+//
+//                if (isiNominalSendWhatsapp.getText().toString().equals("")) {
+//                    isiNominalSendWhatsapp.setError("Silahkan mengisi nominal belanja");
+//                    isiNominalSendWhatsapp.requestFocus();
+//                    return;
+//                }
+//
+//                IDwhatsapp = "0";
+//                TwoItemModel item = (TwoItemModel) spCaraBayarWhatsapp.getSelectedItem();
+//                IDwhatsapp = item.getItem1();
+//
+//                kategoriWhatsapp = "0";
+//                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategoriWhatsapp.getSelectedItem();
+//                kategoriWhatsapp = kategori.getId();
+//
+//                AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this)
+//                        .setTitle("Konfirmasi")
+//                        .setMessage("Apakah Anda yakin ingin menyimpan data?")
+//                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                if (session.getFlag().equals("2")){
+//                                    prepareDataSendWhatsappTenant();
+//                                }
+//                                else{
+//                                    prepareDataSendWhatsapp();
+//                                }
+//                            }
+//                        })
+//                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        })
+//                        .show();
+//                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
+//
+//
+//                dialog.dismiss();
 
             }
         });
@@ -1121,6 +1389,35 @@ public class HomeActivity extends RuntimePermissionsActivity {
 //        dialog.setCanceledOnTouchOutside(false);
         dialog.show();
 
+    }
+
+    private void setupListMerchantSms() {
+//        merchantAdapter = new MerchantAdapter(HomeActivity.this, merchantModels,1);
+//        rvMerchant.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+//        rvMerchant.setAdapter(merchantAdapter);
+    }
+
+    private void setupListScrollListenerMerchantSms() {
+        rvMerchant.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                int totalItems = layoutManager.getItemCount();
+                int visibleItems = layoutManager.getChildCount();
+                int pastVisibleItems = layoutManager.findFirstCompletelyVisibleItemPosition();
+
+                if (! recyclerView.canScrollVertically(1)) {
+                    start += count;
+                    getAllMerchant();
+                }
+
+//                if (pastVisibleItems + visibleItems >= totalItems) {
+//                }
+            }
+        });
     }
 
     private void showProgressDialog() {

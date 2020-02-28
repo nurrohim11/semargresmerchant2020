@@ -1,4 +1,4 @@
-package gmedia.net.id.semargres2020merchant.volunteer.kirimkupon;
+package gmedia.net.id.semargres2020merchant.volunteer;
 
 public class MerchantModel {
     String id,nama,email,deskripsi, kategori,alamat, latitude, longitude;

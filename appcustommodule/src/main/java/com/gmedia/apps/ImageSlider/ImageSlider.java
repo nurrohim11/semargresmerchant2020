@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.gmedia.apps.ClickableViewPager;
-import com.leonardus.irfan.R;
+import com.gmedia.apps.R;
 
 import me.relex.circleindicator.CircleIndicator;
 

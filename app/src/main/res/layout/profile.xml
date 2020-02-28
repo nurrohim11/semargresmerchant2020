@@ -136,6 +136,7 @@
         android:layout_below="@id/ll_top"
         android:layout_marginLeft="@dimen/margin_default"
         android:layout_marginRight="@dimen/margin_default"
+        android:id="@+id/sv_container"
         android:scrollbars="none">
 
         <LinearLayout
@@ -634,18 +635,18 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:padding="@dimen/_4sdp"
+                android:layout_height="match_parent">
 
                 <Button
                     android:id="@+id/btnProfile"
-                    android:layout_width="@dimen/widthBtnSimpan"
-                    android:layout_height="@dimen/heightBtnSimpan"
+                    android:layout_width="@dimen/_210sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/background_button_orange"
                     android:text="Simpan"
                     android:textAllCaps="false"
-                    android:textColor="#fdfdfd"
-                    android:textSize="@dimen/textBtnLogin" />
+                    android:textColor="#fdfdfd"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

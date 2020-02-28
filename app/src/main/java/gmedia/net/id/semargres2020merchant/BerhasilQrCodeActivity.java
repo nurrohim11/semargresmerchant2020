@@ -3,6 +3,8 @@ package gmedia.net.id.semargres2020merchant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,6 +22,7 @@ import gmedia.net.id.semargres2020merchant.util.CircleTransform;
 public class BerhasilQrCodeActivity extends AppCompatActivity {
     TextView nama, telpon, email, jumlah_kupon;
     ImageView gambar;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,66 +42,24 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
         jumlah_kupon = findViewById(R.id.jumlahKuponHasilScanBarcode);
         gambar = findViewById(R.id.fotoHasilScanBarcode);
 
-        RelativeLayout back = findViewById(R.id.backBerhasilQrCode);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-//        RelativeLayout home = findViewById(R.id.btnHomeBerhasilQrCode);
-//        RelativeLayout logout = findViewById(R.id.btnLogout);
-//        final ImageView gbrHome = findViewById(R.id.gambarHome);
-//        final ImageView gbrLogout = findViewById(R.id.gambarLogout);
-//        final TextView txtGbrHome = findViewById(R.id.textGambarHome);
-//        final TextView txtGbrLogout = findViewById(R.id.textGambarLogout);
-//        home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!HomeActivity.isHome) {
-//                    Intent i = new Intent(BerhasilQrCodeActivity.this, HomeActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                    overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-//                }
-//            }
-//        });
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                gbrHome.setImageResource(R.drawable.home_grey);
-//                txtGbrHome.setTextColor(Color.parseColor("#FF5F5D5D"));
-//                gbrLogout.setImageResource(R.drawable.logout_red);
-//                txtGbrLogout.setTextColor(Color.parseColor("#e40112"));
-//                final Dialog dialog = new Dialog(BerhasilQrCodeActivity.this);
-//                dialog.setContentView(R.layout.popup_logout);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                RelativeLayout ya = dialog.findViewById(R.id.logoutYa);
-//                RelativeLayout tidak = dialog.findViewById(R.id.logoutTidak);
-//                ya.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent i = new Intent(BerhasilQrCodeActivity.this, LoginActivity.class);
-//                        startActivity(i);
-//                        finish();
-//                        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-//                    }
-//                });
-//                tidak.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        gbrLogout.setImageResource(R.drawable.logout_grey);
-//                        txtGbrLogout.setTextColor(Color.parseColor("#FF5F5D5D"));
-//                        dialog.dismiss();
-//                    }
-//                });
-//                dialog.setCanceledOnTouchOutside(false);
-//                dialog.show();
-//            }
-//        });
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() !=  null){
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         prepareDataHasilScanBarcode();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            Intent intent = new Intent();
+            setResult(501,intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void prepareDataHasilScanBarcode() {
@@ -116,9 +77,8 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(BerhasilQrCodeActivity.this, HomeActivity.class);
-        startActivity(i);
+        Intent intent = new Intent();
+        setResult(501,intent);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 }

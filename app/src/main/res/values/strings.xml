@@ -26,4 +26,17 @@
         <item>9</item>
         <item>10</item>
     </string-array>
+    <string-array name="testing">
+        <item>Fischer</item>
+        <item>Bauer</item>
+        <item>Scheider</item>
+        <item>Jäger</item>
+        <item>Müller</item>
+        <item>Schulz</item>
+        <item>Neumann</item>
+        <item>Schwarz</item>
+        <item>Lange</item>
+        <item>Köhler</item>
+        <item>Schumacher</item>
+    </string-array>
 </resources>

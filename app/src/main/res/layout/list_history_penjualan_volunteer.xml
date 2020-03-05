@@ -57,7 +57,7 @@
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Nama Pembeli"
+                       android:text="Pembeli"
                        android:textSize="@dimen/default_label" />
 
                    <TextView
@@ -106,7 +106,7 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="@dimen/dp10"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_tiny"
                     android:orientation="vertical">
 
                     <TextView
@@ -124,17 +124,73 @@
                         android:textSize="16sp" />
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/layoutPemberi"
+                    android:id="@+id/layoutMerchant"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_tiny"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diberikan Oleh"
+                        android:text="Merchant"
+                        android:textSize="@dimen/default_label" />
+
+                    <TextView
+                        android:id="@+id/tv_merchant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutWaktu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_bawah"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layout_transaksi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Waktu Transaksi"
+                        android:textSize="@dimen/default_label" />
+
+                    <TextView
+                        android:id="@+id/tv_jam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_merchant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pengirim"
                         android:textSize="@dimen/default_label" />
 
                     <TextView
@@ -145,81 +201,7 @@
                         android:textStyle="bold"
                         android:textSize="16sp" />
                 </LinearLayout>
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/layoutWaktu"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="0.4"-->
-<!--                    android:layout_marginTop="@dimen/margin_small"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Waktu Transaksi"-->
-<!--                        android:textSize="@dimen/default_label" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/tv_jam"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="#000000"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textSize="16sp" />-->
-<!--                </LinearLayout>-->
-
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutWaktu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/layout_bawah"
-                android:layout_marginTop="@dimen/margin_small"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Waktu Transaksi"
-                    android:textSize="@dimen/default_label" />
-
-                <TextView
-                    android:id="@+id/tv_jam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical"-->
-            <!--android:visibility="gone">-->
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Total Belanja"-->
-            <!--android:textSize="14dp" />-->
-
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal">-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/total_belanja_history_penjualan"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:text=""-->
-            <!--android:textColor="#000000"-->
-            <!--android:textSize="@dimen/margin_default" />-->
-            <!--</LinearLayout>-->
-            <!--</LinearLayout>-->
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -62,6 +63,7 @@ public class EditPromoActivity extends AppCompatActivity {
     private ArrayList<CustomKategoriModel> kategoriList;
     private String selectedKategori = "";
     private ArrayAdapter<CustomKategoriModel> adapter;
+    ScrollView svContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,10 @@ public class EditPromoActivity extends AppCompatActivity {
                 HideKeyboard.hideSoftKeyboard(EditPromoActivity.this);
             }
         });
+
+        svContainer = findViewById(R.id.sv_container);
+        svContainer.setHorizontalScrollBarEnabled(false);
+        svContainer.setVerticalScrollBarEnabled(false);
 
 //        RelativeLayout back = findViewById(R.id.backEditPromo);
 //        back.setOnClickListener(new View.OnClickListener() {

@@ -15,6 +15,7 @@ public class URL {
     private static final String baseURL = "https://semargres.gmedia.id/";
     public static String urlLogin = baseURL + "merchant/auth";
     public static String urlProfile = baseURL + "merchant/profile";
+    public static String urlProfileVolunter = baseURL +"api/volunteer/profile";
     public static String urlAllMerchant = baseURL + "merchant/all_merchant";
     public static final String TAG = "semargres_log";
 
@@ -38,6 +39,7 @@ public class URL {
 
     public static String urlSendEmail = baseURL + "merchant/email_kupon";
     public static String urlGantiPassword = baseURL + "merchant/ganti_password";
+    public static String urlGantiPasswordVolunteer = baseURL + "api/volunteer/ganti_password";
     public static String urlScanBarcode = baseURL + "merchant/scan_barcode";
     public static String urlViewPromo = baseURL + "merchant/view_promo";
     public static String urlSettingPromo = baseURL + "merchant/create_promo";
@@ -45,6 +47,7 @@ public class URL {
     public static String urlEditProfile = baseURL + "merchant/edit";
     public static String urlDashboard = baseURL + "merchant/dashboard";
     public static String urlHistoryPenjualan = baseURL + "merchant/transaksi";
+    public static String getUrlHistoryPenjualanVolunter = baseURL+"api/volunteer/history_kupon_volunteer";
     public static String urlEditPromo = baseURL + "merchant/view_promo/";
     public static String urlDeletePromo = baseURL + "merchant/delete_promo";
     public static String urlResetPassword = baseURL + "merchant/reset";
@@ -97,6 +100,9 @@ public class URL {
 
     public static String urlKirimSemua = baseURL + "merchant/qrcode/send_email/all";
     public static String urlKirim = baseURL + "merchant/qrcode/send_email";
+    public static String urlKirimKuponViaSmsVolunter = baseURL + "api/volunteer/send_kupon_volunteer";
+    public static String urlKirimKuponViaScanVolunter = baseURL + "api/volunteer/send_kupon_scan_qrcode";
+
 
     public static String urlCekPromo = baseURL + "merchant/tiket/konser/check_promo";
     public static String urlGetKonser = baseURL + "merchant/tiket/konser";

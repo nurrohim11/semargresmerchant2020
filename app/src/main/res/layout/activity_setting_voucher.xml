@@ -28,11 +28,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_6sdp">
+        android:id="@+id/sv_container">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/_16sdp"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -188,12 +189,19 @@
                     android:textSize="14sp"
                     android:textStyle="italic" />
 
-                <Spinner
-                    android:id="@+id/sp_pilihan_voucher"
-                    android:layout_width="130dp"
-                    android:layout_height="40dp"
+                <LinearLayout
+                    android:background="@drawable/bg_spinner"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:id="@+id/ll_spinner_pv"
                     android:layout_below="@id/txtDetailNilaiVoucher"
-                    android:layout_marginTop="@dimen/margin_default" />
+                    android:layout_marginTop="@dimen/margin_default"
+                    tools:ignore="UselessParent">
+                    <Spinner
+                        android:id="@+id/sp_pilihan_voucher"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/edtNilaiVoucher"
@@ -202,11 +210,11 @@
                     android:layout_below="@id/txtDetailNilaiVoucher"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="@dimen/margin_default"
-                    android:layout_toRightOf="@id/sp_pilihan_voucher"
+                    android:layout_toRightOf="@id/ll_spinner_pv"
                     android:hint="Masukkan nominal"
                     android:inputType="number"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@id/sp_pilihan_voucher" />
+                    android:layout_toEndOf="@id/ll_spinner_pv" />
             </RelativeLayout>
 
             <RelativeLayout

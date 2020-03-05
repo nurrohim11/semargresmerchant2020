@@ -1,8 +1,10 @@
 package gmedia.net.id.semargres2020merchant.volunteer.kirimkupon;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,6 +78,7 @@ public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAd
     String cara_bayar="", kategori_kupon="";
 
     SessionManager session;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +132,31 @@ public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAd
         id_merchant = sessionMerchant.getSpIdSms();
         getKategoriByMerchant(id_merchant);
         btnKirim = findViewById(R.id.btn_send);
+        spKategori.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SettingKategoriKuponModel model = kategoriKupon.get(position);
+                kategori_kupon = model.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spCaraBayar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TwoItemModel twoItemModel = caraBayarList.get(position);
+                cara_bayar = twoItemModel.getItem1();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -137,9 +166,16 @@ public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAd
             @Override
             public void onClick(View v) {
 
-                if (tvMerchantSms.getText().toString().equals("")) {
-                    tvMerchantSms.setError("Silahkan pilih merchant terlebih dahulu");
+                if(tvMerchantSms.getText().toString().equals("")){
+                    tvMerchantSms.setError("Silahkan memilih merchant");
                     tvMerchantSms.requestFocus();
+                    return;
+                }
+
+                if(spKategori == null && spKategori.getSelectedItem() == null){
+                    TextView errorText = (TextView)spKategori.getSelectedView();
+                    errorText.setError("Silahkan memilih merchant");
+                    errorText.requestFocus();
                     return;
                 }
 
@@ -167,24 +203,63 @@ public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAd
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-//                                if (session.getFlag().equals("2")){
-//                                    prepareDataSendWhatsappTenant();
-//                                }
-//                                else{
-//                                    prepareDataSendWhatsapp();
-//                                }
+                                prepareSendKupon();
                             }
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         })
                         .show();
                 alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
+            }
+        });
+    }
 
-                finish();
+    private void prepareSendKupon(){
+        showProgressDialog();
+
+        final JSONObject jBody = new JSONObject();
+        try {
+            jBody.put("id_merchant",sessionMerchant.getSpIdSms());
+            jBody.put("via","sms");
+            jBody.put("kepada", edtTelp.getText());
+            jBody.put("total", edtNominal.getText());
+            jBody.put("id_cara_bayar", cara_bayar);
+            jBody.put("id_kategori_kupon", kategori_kupon);
+            jBody.put("nik",edtNik.getText().toString());
+            jBody.put("alamat",edtAlamat.getText().toString());
+            jBody.put("nama",edtNama.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new ApiVolley(KirimSmsVolActivity.this, jBody, "POST", URL.urlKirimKuponViaSmsVolunter, "", "", 0, new ApiVolley.VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+
+                dismissProgressDialog();
+                try {
+                    JSONObject object = new JSONObject(result);
+                    Log.d(">>>>>", object.toString());
+                    final String status = object.getJSONObject("metadata").getString("status");
+                    String message = object.getJSONObject("metadata").getString("message");
+                    if (status.equals("200")) {
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                dismissProgressDialog();
             }
         });
     }
@@ -385,10 +460,9 @@ public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAd
                             kategoriKupon.add(new SettingKategoriKuponModel(jo.getString("id"), jo.getString("nama"),jo.getString("nominal")));
                         }
                         spKategori.setAdapter(new ArrayAdapter<>(KirimSmsVolActivity.this, R.layout.layout_simple_list, kategoriKupon));
+                    }else{
+                        spKategori.setAdapter(null);
                     }
-//                    else {
-//                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
-//                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -410,5 +484,20 @@ public class KirimSmsVolActivity extends AppCompatActivity implements MerchantAd
         sessionMerchant.saveSPString(SP_NAMA_MERCHANT_SMS, nama);
         tvMerchantSms.setText(sessionMerchant.getSpNamaSms());
         dgMerchant.dismiss();
+    }
+    private void showProgressDialog() {
+        progressDialog = new ProgressDialog(KirimSmsVolActivity.this,
+                R.style.AppTheme_Custom_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.setMessage("Memproses...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void dismissProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 }

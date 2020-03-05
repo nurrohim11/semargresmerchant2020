@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -64,6 +65,7 @@ public class SettingPromoActivity extends AppCompatActivity {
     private ArrayList<CustomKategoriModel> kategoriList;
     private String selectedKategori = "";
     private ArrayAdapter<CustomKategoriModel> adapter;
+    ScrollView svContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +174,10 @@ public class SettingPromoActivity extends AppCompatActivity {
                 }
             }
         });
+
+        svContainer = findViewById(R.id.sv_container);
+        svContainer.setVerticalScrollBarEnabled(false);
+        svContainer.setHorizontalScrollBarEnabled(false);
 
         getDataMerchant();
 

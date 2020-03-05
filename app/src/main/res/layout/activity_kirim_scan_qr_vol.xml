@@ -27,10 +27,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="@dimen/_12sdp"
-        android:paddingLeft="@dimen/_12sdp"
-        android:paddingTop="@dimen/_12sdp"
-        android:paddingBottom="@dimen/_12sdp"
+        android:padding="@dimen/_16sdp"
         android:background="@drawable/background_popup_setting_kupon">
 
         <LinearLayout
@@ -143,88 +140,6 @@
                             android:backgroundTint="#000"
                             android:layout_marginTop="@dimen/margin_tiny" />
                     </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_default"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NIK"
-                        android:textColor="@color/color_black"
-                        android:textSize="12sp" />
-
-                    <EditText
-                        android:id="@+id/edt_nik"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_cute"
-                        android:hint="NIK"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textColor="@color/color_black"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_default"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nama"
-                        android:textColor="@color/color_black"
-                        android:textSize="12sp" />
-
-                    <EditText
-                        android:id="@+id/edt_nama"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_cute"
-                        android:hint="Nama"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textColor="@color/color_black"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_default"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Alamat"
-                        android:textColor="@color/color_black"
-                        android:textSize="12sp" />
-
-                    <EditText
-                        android:id="@+id/edt_alamat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_cute"
-                        android:hint="Alamat"
-                        android:singleLine="false"
-                        android:textColor="@color/color_black"
-                        android:textSize="14sp"
-                        android:inputType="textMultiLine"
-                        android:lines="8"
-                        android:minLines="1"
-                        android:maxLines="10"
-                        android:scrollbars="vertical" />
-
                 </LinearLayout>
 
                 <LinearLayout

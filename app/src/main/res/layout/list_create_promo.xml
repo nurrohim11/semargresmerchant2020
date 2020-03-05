@@ -7,14 +7,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
         android:id="@+id/viewDetailCreatePromo"
         android:gravity="center_vertical"
         android:foregroundGravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/margin_default"
         android:weightSum="10"
-        android:layout_marginStart="5dp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_16sdp"
+        android:paddingLeft="@dimen/_16sdp"
         android:baselineAligned="false">
         <RelativeLayout
             android:layout_width="wrap_content"

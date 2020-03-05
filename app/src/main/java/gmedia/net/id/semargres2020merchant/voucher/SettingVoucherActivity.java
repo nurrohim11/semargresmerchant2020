@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -168,6 +169,10 @@ public class SettingVoucherActivity extends AppCompatActivity {
                 alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.color_grey_new));
             }
         });
+
+        ScrollView svContainer = findViewById(R.id.sv_container);
+        svContainer.setVerticalScrollBarEnabled(false);
+        svContainer.setHorizontalScrollBarEnabled(false);
     }
 
     @Override

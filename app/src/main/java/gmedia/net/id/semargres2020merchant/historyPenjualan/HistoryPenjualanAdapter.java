@@ -58,7 +58,6 @@ public class HistoryPenjualanAdapter extends RecyclerView.Adapter<HistoryPenjual
             tvNama = itemView.findViewById(R.id.tv_nama);
             tvJam = itemView.findViewById(R.id.tv_jam);
             jumlah_kupon = itemView.findViewById(R.id.jumlah_kupon_history_penjualan);
-//            total_belanja = itemView.findViewById(R.id.total_belanja_history_penjualan);
             tvPemberi = itemView.findViewById(R.id.tv_pemberi);
         }
     }

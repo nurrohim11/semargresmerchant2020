@@ -2,66 +2,78 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/margin_default">
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16sdp"
+        android:id="@+id/rv_container">
 
-    <LinearLayout
-        android:id="@+id/layout_namaVoucher"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/layout_namaVoucher"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/namaVoucher"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Voucher Makan" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/namaVoucher"
-            android:layout_width="150dp"
+            android:id="@+id/jmlVoucher"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="Voucher Makan" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/jmlVoucher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_namaVoucher"
-        android:textSize="14sp"
-        tools:text="200" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_namaVoucher"
-        android:layout_marginLeft="3dp"
-        android:layout_toRightOf="@id/jmlVoucher"
-        android:text="voucher"
-        android:textSize="14sp"
-        android:layout_marginStart="3dp"
-        android:layout_toEndOf="@id/jmlVoucher" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_default"
-        android:layout_toRightOf="@id/layout_namaVoucher"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_toEndOf="@id/layout_namaVoucher">
+            android:layout_below="@id/layout_namaVoucher"
+            android:textSize="14sp"
+            tools:text="200" />
 
         <TextView
-            android:id="@+id/nominalVoucher"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="Rp 50.000" />
-    </LinearLayout>
+            android:layout_below="@id/layout_namaVoucher"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/jmlVoucher"
+            android:text="voucher"
+            android:textSize="14sp"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@id/jmlVoucher" />
 
-    <ImageView
-        android:id="@+id/deleteVoucher"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="TODO"
-        android:src="@drawable/close"
-        android:layout_alignParentEnd="true" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_toRightOf="@id/layout_namaVoucher"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_toEndOf="@id/layout_namaVoucher">
+
+            <TextView
+                android:id="@+id/nominalVoucher"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Rp 50.000" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/deleteVoucher"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_delete"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/rv_container"
+        android:background="#B4E9E2E2" />
 </RelativeLayout>

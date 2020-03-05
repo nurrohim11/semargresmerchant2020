@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -103,6 +104,10 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                 HideKeyboard.hideSoftKeyboard(TambahAkunActivity.this);
             }
         });
+
+        ScrollView svContainer = findViewById(R.id.sv_container);
+        svContainer.setHorizontalScrollBarEnabled(false);
+        svContainer.setVerticalScrollBarEnabled(false);
 
 //        RelativeLayout back = findViewById(R.id.back);
 //        back.setOnClickListener(new View.OnClickListener() {

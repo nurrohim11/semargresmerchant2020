@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "gmedia.net.id.semargres2020merchant"
+        applicationId "gmedia.net.id.semargres2018merchant"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 24
@@ -16,6 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/font'] } }
 }
 
 dependencies {

@@ -76,7 +76,7 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
 
     private LinearLayout llSelectMerchant;
     private TextView tvMerchantScan;
-    private EditText edtNama, edtAlamat, edtNik, edtNominal;
+    private EditText edtNominal;
     private Button btnKirim;
     private Spinner spCaraBayar, spKategori;
 
@@ -127,9 +127,6 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
         tvMerchantScan = findViewById(R.id.tv_merchant);
         tvMerchantScan.setText(sessionMerchant.getSpNamaQr());
 
-        edtNama = findViewById(R.id.edt_nama);
-        edtAlamat = findViewById(R.id.edt_alamat);
-        edtNik = findViewById(R.id.edt_nik);
         edtNominal = findViewById(R.id.edt_nominal);
         spCaraBayar = (Spinner) findViewById(R.id.sp_cara_bayar);
         spKategori = (Spinner) findViewById(R.id.sp_kategori);

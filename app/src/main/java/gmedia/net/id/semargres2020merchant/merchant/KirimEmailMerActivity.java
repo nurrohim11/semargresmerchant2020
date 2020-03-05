@@ -104,6 +104,9 @@ public class KirimEmailMerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendKupon();
+//                TwoItemModel item = (TwoItemModel) spCaraBayar.getSelectedItem();
+//                cara_bayar = item.getItem1();
+//                Toast.makeText(KirimEmailMerActivity.this, cara_bayar, Toast.LENGTH_SHORT).show();
             }
         });
     }

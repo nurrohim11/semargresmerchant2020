@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/ToolbarTheme"
+            app:title="History E-Kupon"
+            app:titleTextColor="@color/color_white" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:id="@+id/ll_select_merchant"
+                tools:ignore="UselessParent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    android:text="2019-10-10"
+                    android:layout_weight="1.4"
+                    android:textSize="@dimen/_12sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_2sdp"
+                    android:id="@+id/tv_startdate"
+                    android:textColor="#000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="s/d"
+                    android:layout_weight="0.2"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_3sdp"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:padding="@dimen/_2sdp"
+                    android:textColor="#000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="2019-10-10"
+                    android:layout_weight="1.4"
+                    android:padding="@dimen/_2sdp"
+                    android:textSize="@dimen/_12sdp"
+                    android:gravity="center"
+                    android:background="#fff"
+                    android:id="@+id/tv_enddate"
+                    android:textColor="#000"/>
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:id="@+id/btn_filter"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:background="@drawable/background_button_orange"
+                android:src="@drawable/ic_search_black_24dp"
+                android:text="Cari"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:layout_weight="3"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_history_penjualan"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:scrollbarSize="@dimen/default_scrollbar">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+</LinearLayout>

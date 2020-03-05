@@ -28,10 +28,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".volunteer.kirimkupon.KirimScanQrVolActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".merchant.KirimScanQrMerActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".historyPenjualan.volunteer.HistoryPenjualanVolunterActivity"></activity>
+        <activity
+            android:name=".volunteer.kirimkupon.KirimScanQrVolActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".merchant.KirimScanQrMerActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".merchant.KirimEmailMerActivity"
             android:windowSoftInputMode="stateHidden" />
@@ -91,7 +94,8 @@
         <activity
             android:name=".voucher.SettingVoucherActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".voucher.VoucherActivity"
             android:screenOrientation="portrait"

@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -169,20 +170,19 @@ public class LoginActivity extends AppCompatActivity {
         new ApiVolley(LoginActivity.this, jBody, "POST", URL.urlLogin, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
+                Log.d(">>>>>>>>",result);
                 dismissProgressDialog();
                 try {
                     JSONObject object = new JSONObject(result);
-//                    Log.d("Hasil login", object.toString());
-                    final String status = object.getJSONObject("response").getString("status");
-                    if (status.equals("1")) {
+                    Log.d(">>>>>", String.valueOf(object.getJSONObject("metadata").getString("status")));
+                    final String status = object.getJSONObject("metadata").getString("status");
+                    if (status.equals("200")) {
                         String token = object.getJSONObject("response").getString("token");
                         String id = object.getJSONObject("response").getString("id");
                         String nama = object.getJSONObject("response").getString("username");
                         String flag = object.getJSONObject("response").getString("flag");
-                        String flagTiket = object.getJSONObject("response").getString("flag_jual_tiket");
-                        String flagParade = object.getJSONObject("response").getString("flag_parade");
 
-                        session.createLoginSession(nama, nama, token, id, nama, flag, flagTiket, flagParade,"");
+                        session.createLoginSession(nama, nama, token, id, nama, flag);
 
                         Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(i);

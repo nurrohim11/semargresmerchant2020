@@ -28,7 +28,6 @@ public class SessionManager {
     public static final String KEY_FLAG = "flag";
     public static final String KEY_FLAG_JUAL_TIKET = "flag_jual_tiket";
     public static final String KEY_FLAG_PARADE = "flag_parade";
-    public static final String KEY_LEVEL = "level";
 
     // Sharedpref file name
     private static final String PREF_NAME = "AndroidHivePref";
@@ -57,7 +56,7 @@ public class SessionManager {
     /**
      * Create login session
      */
-    public void createLoginSession(String name, String email, String token, String uid, String username, String flag, String flagTiket, String flagParade, String level) {
+    public void createLoginSession(String name, String email, String token, String uid, String username, String flag) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -71,11 +70,6 @@ public class SessionManager {
         editor.putString(KEY_UID, uid);
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_FLAG, flag);
-
-        editor.putString(KEY_FLAG_JUAL_TIKET, flagTiket);
-        editor.putString(KEY_FLAG_PARADE, flagParade);
-        editor.putString(KEY_LEVEL, level);
-
 
         // commit changes
         editor.commit();
@@ -141,10 +135,6 @@ public class SessionManager {
 
     public String getFlagParade(){
         return pref.getString(KEY_FLAG_PARADE, "");
-    }
-
-    public String getLevel(){
-        return pref.getString(KEY_LEVEL, "");
     }
 
     /**

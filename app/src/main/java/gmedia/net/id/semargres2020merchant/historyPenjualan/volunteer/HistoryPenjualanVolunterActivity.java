@@ -53,7 +53,7 @@ public class HistoryPenjualanVolunterActivity extends AppCompatActivity {
     private RecyclerView rvMerchant;
     MerchantAdapter merchantAdapter;
 
-    int start_merchant = 0, count_merchant = 20, start = 0, count = 20;
+    int start_merchant = 0, count_merchant = 20, start = 0, count = 10;
     String id_merchant="";
 
     TextView tvStartDate, tvEndDate;
@@ -190,7 +190,7 @@ public class HistoryPenjualanVolunterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 start =0;
-                count =20;
+                count =10;
 //                historyPenjualan.clear();
                 adapter.notifyDataSetChanged();
                 prepareDataHistoryPenjualan("search");
@@ -254,6 +254,7 @@ public class HistoryPenjualanVolunterActivity extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                             dismissProgressDialog();
                         }
+                        dismissProgressDialog();
                     }
 //                    else {
 //                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();

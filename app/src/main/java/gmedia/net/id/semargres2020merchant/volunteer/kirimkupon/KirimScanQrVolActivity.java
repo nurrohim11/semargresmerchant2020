@@ -1,9 +1,11 @@
 package gmedia.net.id.semargres2020merchant.volunteer.kirimkupon;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +44,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import gmedia.net.id.semargres2020merchant.BerhasilQrCodeActivity;
 import gmedia.net.id.semargres2020merchant.R;
 import gmedia.net.id.semargres2020merchant.kategoriKupon.SettingKategoriKuponModel;
 import gmedia.net.id.semargres2020merchant.merchant.KirimScanQrMerActivity;
@@ -85,6 +89,7 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
 
     SessionManager session;
     private IntentResult resultScanBarcode;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +138,31 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
         id_merchant = sessionMerchant.getSpIdQr();
         getKategoriByMerchant(id_merchant);
         btnKirim = findViewById(R.id.btn_send);
+        spKategori.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SettingKategoriKuponModel model = kategoriKupon.get(position);
+                kategori_kupon = model.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spCaraBayar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TwoItemModel twoItemModel = caraBayarList.get(position);
+                cara_bayar = twoItemModel.getItem1();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -142,15 +172,16 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
             @Override
             public void onClick(View v) {
 
-                TwoItemModel item = (TwoItemModel) spCaraBayar.getSelectedItem();
-                cara_bayar = item.getItem1();
-
-                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategori.getSelectedItem();
-                kategori_kupon = kategori.getId();
-
-                if(tvMerchantScan.getText().toString().equals("")){
+                if(sessionMerchant == null && sessionMerchant.getSpIdQr().equals("")){
                     tvMerchantScan.setError("Silahkan pilih merchant dahulu");
                     tvMerchantScan.requestFocus();
+                    return;
+                }
+
+                if(spKategori ==null && spKategori.getSelectedItem() == null){
+                    TextView errorText = (TextView)spKategori.getSelectedView();
+                    errorText.setError("Silahkan memilih kategori");
+                    errorText.requestFocus();
                     return;
                 }
 
@@ -205,6 +236,8 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
 
             if (resultScanBarcode.getContents() != null) {
                 // TODO to action if after scan barcode
+                Toast.makeText(this, resultScanBarcode.getContents(), Toast.LENGTH_SHORT).show();
+                prepareDataScanBarcode();
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -409,10 +442,9 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
                             kategoriKupon.add(new SettingKategoriKuponModel(jo.getString("id"), jo.getString("nama"),jo.getString("nominal")));
                         }
                         spKategori.setAdapter(new ArrayAdapter<>(KirimScanQrVolActivity.this, R.layout.layout_simple_list, kategoriKupon));
+                    }else{
+                        spKategori.setAdapter(null);
                     }
-//                    else {
-//                        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
-//                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -435,4 +467,73 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
         tvMerchantScan.setText(sessionMerchant.getSpNamaQr());
         dgMerchant.dismiss();
     }
+
+    private void prepareDataScanBarcode() {
+        showProgressDialog();
+
+        final JSONObject jBody = new JSONObject();
+        try {
+            jBody.put("qrcode_user", resultScanBarcode.getContents());
+            jBody.put("id_merchant",sessionMerchant.getSpIdQr());
+            jBody.put("total", edtNominal.getText().toString());
+            jBody.put("cara_bayar", cara_bayar);
+            jBody.put("id_kategori_kupon", kategori_kupon);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new ApiVolley(KirimScanQrVolActivity.this, jBody, "POST", URL.urlKirimKuponViaScanVolunter, "", "", 0, new ApiVolley.VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+
+                dismissProgressDialog();
+                Log.d(">>>>>",result);
+                try {
+                    JSONObject object = new JSONObject(result);
+                    final String status = object.getJSONObject("metadata").getString("status");
+                    String message = object.getJSONObject("metadata").getString("message");
+                    if (status.equals("200")) {
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                        JSONObject detail = object.getJSONObject("response");
+
+                        Intent i = new Intent(KirimScanQrVolActivity.this, BerhasilQrCodeActivity.class);
+                        i.putExtra("type", "volunteer");
+                        i.putExtra("nama", detail.getString("nama"));
+                        i.putExtra("email", detail.getString("email"));
+                        i.putExtra("telpon", detail.getString("no_telp"));
+                        i.putExtra("gambar", detail.getString("foto"));
+                        i.putExtra("jumlah_kupon", detail.getString("jumlah_kupon"));
+                        startActivityForResult(i,601);
+//                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                dismissProgressDialog();
+            }
+        });
+    }
+    private void showProgressDialog() {
+        progressDialog = new ProgressDialog(KirimScanQrVolActivity.this,
+                R.style.AppTheme_Custom_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.setMessage("Memproses...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void dismissProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+    }
+
 }

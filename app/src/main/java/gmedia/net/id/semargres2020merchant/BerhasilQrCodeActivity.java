@@ -23,6 +23,7 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
     TextView nama, telpon, email, jumlah_kupon;
     ImageView gambar;
     Toolbar toolbar;
+    Bundle save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,25 +46,31 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() !=  null){
+            getSupportActionBar().setTitle("");
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        save = getIntent().getExtras();
         prepareDataHasilScanBarcode();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home){
-            Intent intent = new Intent();
-            setResult(501,intent);
+            if(save.getString("type").equals("merchant")){
+                Intent intent = new Intent();
+                setResult(501,intent);
+            }else{
+                Intent intent = new Intent();
+                setResult(601,intent);
+            }
             finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void prepareDataHasilScanBarcode() {
-        Bundle save = getIntent().getExtras();
         if (save != null) {
             nama.setText(save.getString("nama", ""));
             email.setText(save.getString("email", ""));
@@ -77,8 +84,13 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent();
-        setResult(501,intent);
+        if(save.getString("type").equals("merchant")){
+            Intent intent = new Intent();
+            setResult(501,intent);
+        }else{
+            Intent intent = new Intent();
+            setResult(601,intent);
+        }
         finish();
     }
 }

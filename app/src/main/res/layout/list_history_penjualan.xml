@@ -57,7 +57,7 @@
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Nama Pembeli"
+                       android:text="Pembeli"
                        android:textSize="@dimen/default_label" />
 
                    <TextView
@@ -134,7 +134,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diberikan Oleh"
+                        android:text="Pengirim"
                         android:textSize="@dimen/default_label" />
 
                     <TextView

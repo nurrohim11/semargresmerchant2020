@@ -203,10 +203,11 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
                         JSONObject detail = object.getJSONObject("response");
 
                         Intent i = new Intent(KirimScanQrMerActivity.this, BerhasilQrCodeActivity.class);
+                        i.putExtra("type", "merchant");
                         i.putExtra("nama", detail.getString("nama"));
                         i.putExtra("email", detail.getString("email"));
                         i.putExtra("telpon", detail.getString("no_telp"));
-                        i.putExtra("gambar", detail.getString("foto"));
+                        i.putExtra("foto", detail.getString("foto"));
                         i.putExtra("jumlah_kupon", detail.getString("jumlah_kupon"));
                         startActivityForResult(i,501);
 //                        finish();

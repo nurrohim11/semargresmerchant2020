@@ -184,7 +184,7 @@ public class KirimEmailVolActivity extends AppCompatActivity implements Merchant
 
         if(spKategori == null && spKategori.getSelectedItem() == null){
             TextView errorText = (TextView)spKategori.getSelectedView();
-            errorText.setError("Silahkan memilih merchant");
+            errorText.setError("Silahkan memilih kategori");
             errorText.requestFocus();
             return;
         }

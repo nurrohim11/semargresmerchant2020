@@ -12,19 +12,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_selesai"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/btn_selesai" />
+            android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/btn_selesai"
-            android:layout_width="@dimen/_210sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="16dp"
-            android:background="@drawable/background_button_orange"
-            android:text="Tambahkan Kuis"
-            android:textAllCaps="false"
-            android:textColor="@color/color_white" />
     </RelativeLayout>
 </LinearLayout>

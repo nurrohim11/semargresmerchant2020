@@ -57,13 +57,13 @@ public class KuisSelesaiFragment extends Fragment {
 
 //        getSelesai();
 
-        Button btnCreate = view.findViewById(R.id.btn_selesai);
-        btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), CreateQuizActivity.class));
-            }
-        });
+//        Button btnCreate = view.findViewById(R.id.btn_selesai);
+//        btnCreate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), CreateQuizActivity.class));
+//            }
+//        });
 
         return view;
     }

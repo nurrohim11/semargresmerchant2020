@@ -15,7 +15,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="5">
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/namaSettingKupon"
@@ -30,7 +30,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4">
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/nominalSettingKupon"
@@ -39,19 +39,6 @@
                 android:text=""
                 android:textColor="#000000"
                 android:textSize="15sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/deleteKupon"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_delete" />
         </RelativeLayout>
 
     </LinearLayout>

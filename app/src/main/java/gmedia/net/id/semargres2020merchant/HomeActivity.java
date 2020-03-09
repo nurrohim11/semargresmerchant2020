@@ -189,13 +189,13 @@ public class HomeActivity extends RuntimePermissionsActivity {
 //        });
 
 //        Kategori e-kupon
-//        menuSettingKupon = findViewById(R.id.menuSettingKupon);
-//        menuSettingKupon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                kategoriKupon();
-//            }
-//        });
+        menuSettingKupon = findViewById(R.id.menuSettingKupon);
+        menuSettingKupon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kategoriKupon();
+            }
+        });
 
 //        Tambah akun tenant
         llTambahAkun = findViewById(R.id.ll_tambah_akun);
@@ -324,7 +324,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
     }
 
     private void visibilityCheck() {
-//        layoutSettingKupon = findViewById(R.id.layoutSettingKuponHome);
+        layoutSettingKupon = findViewById(R.id.layoutSettingKuponHome);
         layoutTambahAkun = findViewById(R.id.layoutTambahAkunHome);
         layoutCreatePromo = findViewById(R.id.layoutPromoHome);
         layoutKuis = findViewById(R.id.layoutBuatKuis);
@@ -337,7 +337,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
 //        CardView layoutKonser = findViewById(R.id.layoutTiketKonser);
 
         if (session.getFlag().equals("2")) {
-//            layoutSettingKupon.setVisibility(View.GONE);
+            layoutSettingKupon.setVisibility(View.GONE);
             layoutCreatePromo.setVisibility(View.VISIBLE);
             layoutTambahAkun.setVisibility(View.GONE);
             layoutKuis.setVisibility(View.VISIBLE);
@@ -346,11 +346,12 @@ public class HomeActivity extends RuntimePermissionsActivity {
             layoutTambahAkun.setVisibility(View.GONE);
             layoutCreatePromo.setVisibility(View.GONE);
             layoutKuis.setVisibility(View.GONE);
+            layoutSettingKupon.setVisibility(View.GONE);
             layout.setVisibility(View.GONE);
             layoutNama.setVisibility(View.GONE);
         } else {
             layoutCreatePromo.setVisibility(View.VISIBLE);
-//            layoutSettingKupon.setVisibility(View.VISIBLE);
+            layoutSettingKupon.setVisibility(View.VISIBLE);
             layoutTambahAkun.setVisibility(View.VISIBLE);
             layoutKuis.setVisibility(View.VISIBLE);
             layout.setVisibility(View.GONE);

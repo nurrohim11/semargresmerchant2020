@@ -46,150 +46,150 @@ public class SettingKategoriKuponAdapter extends RecyclerView.Adapter<SettingKat
         FormatRupiah request = new FormatRupiah();
         holder.judul.setText(rvData.get(position).getNama());
         holder.nominal.setText(request.ChangeToRupiahFormat(rvData.get(position).getNominal()));
-        holder.detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.popup_tambah_kategori_kupon);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                final EditText edt_namaKupon = dialog.findViewById(R.id.edt_namaKupon);
-                final EditText edt_hargaPerKupon = dialog.findViewById(R.id.edt_hargaPerKupon);
-                RelativeLayout rvOK = dialog.findViewById(R.id.rv_ok);
-                RelativeLayout rvCancel = dialog.findViewById(R.id.rv_cancel);
-
-                edt_namaKupon.setText(rvData.get(position).getNama());
-                edt_hargaPerKupon.setText(rvData.get(position).getNominal());
-
-                rvOK.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (edt_namaKupon.getText().toString().equals("")) {
-                            edt_namaKupon.setError("Nama kupon harap diisi");
-                            edt_namaKupon.requestFocus();
-                            return;
-                        }
-
-                        if (edt_hargaPerKupon.getText().toString().equals("")) {
-                            edt_hargaPerKupon.setError("Harga per kupon harap diisi");
-                            edt_hargaPerKupon.requestFocus();
-                            return;
-                        }
-
-                        final JSONObject jBody = new JSONObject();
-                        try {
-                            jBody.put("id", rvData.get(position).getId());
-                            jBody.put("nama", edt_namaKupon.getText());
-                            jBody.put("nominal", edt_hargaPerKupon.getText());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        new ApiVolley(context, jBody, "POST", URL.urlKategoriKuponUpdate, "", "", 0, new ApiVolley.VolleyCallback() {
-                            @Override
-                            public void onSuccess(String result) {
-                                try {
-                                    JSONObject object = new JSONObject(result);
-                                    String pesan = object.getJSONObject("metadata").getString("message");
-                                    String status = object.getJSONObject("metadata").getString("status");
-                                    if (status.equals("200")) {
+//        holder.detail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Dialog dialog = new Dialog(context);
+//                dialog.setContentView(R.layout.popup_tambah_kategori_kupon);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//                final EditText edt_namaKupon = dialog.findViewById(R.id.edt_namaKupon);
+//                final EditText edt_hargaPerKupon = dialog.findViewById(R.id.edt_hargaPerKupon);
+//                RelativeLayout rvOK = dialog.findViewById(R.id.rv_ok);
+//                RelativeLayout rvCancel = dialog.findViewById(R.id.rv_cancel);
+//
+//                edt_namaKupon.setText(rvData.get(position).getNama());
+//                edt_hargaPerKupon.setText(rvData.get(position).getNominal());
+//
+//                rvOK.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//                        if (edt_namaKupon.getText().toString().equals("")) {
+//                            edt_namaKupon.setError("Nama kupon harap diisi");
+//                            edt_namaKupon.requestFocus();
+//                            return;
+//                        }
+//
+//                        if (edt_hargaPerKupon.getText().toString().equals("")) {
+//                            edt_hargaPerKupon.setError("Harga per kupon harap diisi");
+//                            edt_hargaPerKupon.requestFocus();
+//                            return;
+//                        }
+//
+//                        final JSONObject jBody = new JSONObject();
+//                        try {
+//                            jBody.put("id", rvData.get(position).getId());
+//                            jBody.put("nama", edt_namaKupon.getText());
+//                            jBody.put("nominal", edt_hargaPerKupon.getText());
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        new ApiVolley(context, jBody, "POST", URL.urlKategoriKuponUpdate, "", "", 0, new ApiVolley.VolleyCallback() {
+//                            @Override
+//                            public void onSuccess(String result) {
+//                                try {
+//                                    JSONObject object = new JSONObject(result);
+//                                    String pesan = object.getJSONObject("metadata").getString("message");
+//                                    String status = object.getJSONObject("metadata").getString("status");
+//                                    if (status.equals("200")) {
+////                                        Toast.makeText(context, pesan, Toast.LENGTH_LONG).show();
+//                                        rvData.remove(position);
+//                                        rvData.add(position, new SettingKategoriKuponModel(
+//                                                jBody.getString("id"),
+//                                                jBody.getString("nama"),
+//                                                jBody.getString("nominal")
+//                                        ));
+//                                        notifyDataSetChanged();
+//                                    } else {
 //                                        Toast.makeText(context, pesan, Toast.LENGTH_LONG).show();
-                                        rvData.remove(position);
-                                        rvData.add(position, new SettingKategoriKuponModel(
-                                                jBody.getString("id"),
-                                                jBody.getString("nama"),
-                                                jBody.getString("nominal")
-                                        ));
-                                        notifyDataSetChanged();
-                                    } else {
-                                        Toast.makeText(context, pesan, Toast.LENGTH_LONG).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
+//                                    }
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onError(String result) {
+//                                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+//                            }
+//                        });
+//
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                rvCancel.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                dialog.setCanceledOnTouchOutside(false);
+//                dialog.show();
+//            }
+//        });
 
-                            @Override
-                            public void onError(String result) {
-                                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                        dialog.dismiss();
-                    }
-                });
-
-                rvCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-            }
-        });
-
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.popup_delete_kategori_kupon);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                RelativeLayout ya = dialog.findViewById(R.id.logoutYa);
-                ya.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        final JSONObject jBody = new JSONObject();
-                        try {
-                            jBody.put("id", rvData.get(position).getId());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        showProgressDialog();
-                        new ApiVolley(context, jBody, "POST", URL.urlKategoriKuponDelete, "", "", 0, new ApiVolley.VolleyCallback() {
-                            @Override
-                            public void onSuccess(String result) {
-
-                                dismissProgressDialog();
-                                try {
-                                    JSONObject object = new JSONObject(result);
-                                    final String status = object.getJSONObject("metadata").getString("status");
-                                    String message = object.getJSONObject("metadata").getString("message");
-                                    if (status.equals("200")) {
-//                                        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
-                                        rvData.remove(position);
-                                        notifyDataSetChanged();
-                                        dialog.dismiss();
-                                    } else {
-                                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            @Override
-                            public void onError(String result) {
-                                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-                                dismissProgressDialog();
-                            }
-                        });
-                    }
-                });
-                RelativeLayout tidak = dialog.findViewById(R.id.logoutTidak);
-                tidak.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-            }
-        });
+//        holder.delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Dialog dialog = new Dialog(context);
+//                dialog.setContentView(R.layout.popup_delete_kategori_kupon);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                RelativeLayout ya = dialog.findViewById(R.id.logoutYa);
+//                ya.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        final JSONObject jBody = new JSONObject();
+//                        try {
+//                            jBody.put("id", rvData.get(position).getId());
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        showProgressDialog();
+//                        new ApiVolley(context, jBody, "POST", URL.urlKategoriKuponDelete, "", "", 0, new ApiVolley.VolleyCallback() {
+//                            @Override
+//                            public void onSuccess(String result) {
+//
+//                                dismissProgressDialog();
+//                                try {
+//                                    JSONObject object = new JSONObject(result);
+//                                    final String status = object.getJSONObject("metadata").getString("status");
+//                                    String message = object.getJSONObject("metadata").getString("message");
+//                                    if (status.equals("200")) {
+////                                        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
+//                                        rvData.remove(position);
+//                                        notifyDataSetChanged();
+//                                        dialog.dismiss();
+//                                    } else {
+//                                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//                                    }
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onError(String result) {
+//                                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+//                                dismissProgressDialog();
+//                            }
+//                        });
+//                    }
+//                });
+//                RelativeLayout tidak = dialog.findViewById(R.id.logoutTidak);
+//                tidak.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                dialog.setCanceledOnTouchOutside(false);
+//                dialog.show();
+//            }
+//        });
 
     }
 
@@ -221,15 +221,15 @@ public class SettingKategoriKuponAdapter extends RecyclerView.Adapter<SettingKat
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView judul;
         private TextView nominal;
-        private RelativeLayout delete;
-        private LinearLayout detail;
+//        private RelativeLayout delete;
+//        private LinearLayout detail;
 
         public ViewHolder(View itemView) {
             super(itemView);
             judul = itemView.findViewById(R.id.namaSettingKupon);
             nominal = itemView.findViewById(R.id.nominalSettingKupon);
-            detail = itemView.findViewById(R.id.viewDetailSettingKupon);
-            delete = itemView.findViewById(R.id.deleteKupon);
+//            detail = itemView.findViewById(R.id.viewDetailSettingKupon);
+//            delete = itemView.findViewById(R.id.deleteKupon);
         }
     }
 

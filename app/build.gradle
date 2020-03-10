@@ -6,7 +6,7 @@ android {
         applicationId "gmedia.net.id.semargres2018merchant"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 25
+        versionCode 26
         versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

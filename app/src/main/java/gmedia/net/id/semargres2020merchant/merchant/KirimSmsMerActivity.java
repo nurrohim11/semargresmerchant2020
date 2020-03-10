@@ -245,7 +245,7 @@ public class KirimSmsMerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        new ApiVolley(KirimSmsMerActivity.this, jBody, "POST", URL.urlSendWhatsapp, "", "", 0, new ApiVolley.VolleyCallback() {
+        new ApiVolley(KirimSmsMerActivity.this, jBody, "POST", URL.urlSendSms, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
 
@@ -372,7 +372,7 @@ public class KirimSmsMerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        new ApiVolley(KirimSmsMerActivity.this, jBody, "POST", URL.urlSendWhatsappTenant, "", "", 0, new ApiVolley.VolleyCallback() {
+        new ApiVolley(KirimSmsMerActivity.this, jBody, "POST", URL.urlSendSmsTenant, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
 

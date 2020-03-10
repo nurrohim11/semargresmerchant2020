@@ -523,6 +523,7 @@
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_centerInParent="true"
                     android:clickable="true"
                     android:src="@mipmap/gallery"
                     android:layout_marginStart="10dp" />
@@ -534,6 +535,11 @@
                     android:layout_centerInParent="true"
                     android:visibility="gone" />
             </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000"
+                android:text="* ukuran 720x490" />
 
             <LinearLayout
                 android:layout_width="match_parent"

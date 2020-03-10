@@ -121,6 +121,16 @@ public class SettingPromoActivity extends AppCompatActivity {
             }
         });
 
+        showCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+            }
+        });
+
         proses = findViewById(R.id.btnSettingPromo);
         proses.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -395,8 +405,9 @@ public class SettingPromoActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             try {
+                openCamera.setVisibility(View.GONE);
                 photo = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 640, 640, true));
+                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -130,7 +130,10 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
         textLatitude = findViewById(R.id.textLatitude);
         textLongitude = findViewById(R.id.textLongitude);
 
-        showCamera = findViewById(R.id.showCameraProfile);
+//        showCamera = findViewById(R.id.showCameraProfile);
+//        showCamera.setImageDrawable(null);
+
+//        openCameraProfile = findViewById(R.id.openCameraProfile);
 
         pbLoading = findViewById(R.id.pb_loading);
 
@@ -464,25 +467,25 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                         marker.setPosition(lokasi);
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lokasi, 15.0f));
 
-                        pbLoading.setVisibility(View.VISIBLE);
-                        Picasso.with(TambahAkunActivity.this).load(object.getJSONObject("response").getString("foto"))
-                                .networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE)
-                                .into(showCamera, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        BitmapDrawable drawable = (BitmapDrawable) showCamera.getDrawable();
-                                        bitmap = drawable.getBitmap();
-                                        bitmap = CompressBitmap.scaleDown(bitmap, 460, true);
-//                                        bitmapString = bitmap != null ? EncodeBitmapToString.convert(bitmap) : "";
-                                        pbLoading.setVisibility(View.GONE);
-                                    }
-
-                                    @Override
-                                    public void onError() {
-
-                                        pbLoading.setVisibility(View.GONE);
-                                    }
-                                });
+//                        pbLoading.setVisibility(View.VISIBLE);
+//                        Picasso.with(TambahAkunActivity.this).load(object.getJSONObject("response").getString("foto"))
+//                                .networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE)
+//                                .into(showCamera, new Callback() {
+//                                    @Override
+//                                    public void onSuccess() {
+//                                        BitmapDrawable drawable = (BitmapDrawable) showCamera.getDrawable();
+//                                        bitmap = drawable.getBitmap();
+//                                        bitmap = CompressBitmap.scaleDown(bitmap, 460, true);
+////                                        bitmapString = bitmap != null ? EncodeBitmapToString.convert(bitmap) : "";
+//                                        pbLoading.setVisibility(View.GONE);
+//                                    }
+//
+//                                    @Override
+//                                    public void onError() {
+//
+//                                        pbLoading.setVisibility(View.GONE);
+//                                    }
+//                                });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

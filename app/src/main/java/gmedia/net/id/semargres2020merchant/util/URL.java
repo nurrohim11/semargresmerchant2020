@@ -66,6 +66,7 @@ public class URL {
     public static String urlKategoriKuponDelete = baseURL + "master/kategori_kupon/delete";
 
     public static String urlSendWhatsapp = baseURL + "merchant/whatsapp_kupon";
+    public static String urlSendSms = baseURL + "api/merchant/sms_kupon";
 
     public static String urlStoreUserAkun = baseURL + "merchant/user_account/store";
     public static String urlUserAkun = baseURL + "merchant/user_account";
@@ -95,6 +96,7 @@ public class URL {
 
     public static String urlSendEmailTenant = baseURL + "tenant/kupon/email";
     public static String urlSendWhatsappTenant = baseURL + "tenant/kupon/whatsapp";
+    public static String urlSendSmsTenant = baseURL + "api/tenant/kupon/send_via_sms";
 
     public static String urlDashboardTenant = baseURL + "tenant/dashboard";
 

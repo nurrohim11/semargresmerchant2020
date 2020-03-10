@@ -113,7 +113,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
     TextView textLatitude, textLongitude;
     TextView isianJamBuka, isianJamTutup;
     String isianlatitude, isianlongtitude;
-    ImageView foto;
+    ImageView foto,openCamera;
     Bitmap bitmap, photo;
     //    Boolean posisi = true;
     ArrayAdapter<CustomKategoriModel> adapter;
@@ -163,7 +163,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
         textLongitude = findViewById(R.id.textLongitude);
         foto = findViewById(R.id.showCameraProfile);
         showCamera = findViewById(R.id.showCameraProfile);
-        ImageView openCamera = findViewById(R.id.openCameraProfile);
+        openCamera = findViewById(R.id.openCameraProfile);
         pbLoading = (ProgressBar) findViewById(R.id.pb_loading);
 
         layout1 = findViewById(R.id.layoutJamBuka);
@@ -286,6 +286,16 @@ public class Profile extends AppCompatActivity implements LocationListener {
         loadKategori();
 
         openCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+            }
+        });
+
+        showCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -731,6 +741,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
                                     public void onSuccess() {
                                         BitmapDrawable drawable = (BitmapDrawable) showCamera.getDrawable();
                                         bitmap = drawable.getBitmap();
+                                        openCamera.setVisibility(View.GONE);
                                         bitmap = scaleDown(bitmap, 460, true);
                                         bitmapString = bitmap != null ? EncodeBitmapToString.convert(bitmap) : "";
                                         pbLoading.setVisibility(View.GONE);
@@ -815,6 +826,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
                                     public void onSuccess() {
                                         BitmapDrawable drawable = (BitmapDrawable) showCamera.getDrawable();
                                         bitmap = drawable.getBitmap();
+                                        openCamera.setVisibility(View.GONE);
                                         bitmap = scaleDown(bitmap, 460, true);
                                         bitmapString = bitmap != null ? EncodeBitmapToString.convert(bitmap) : "";
                                         pbLoading.setVisibility(View.GONE);
@@ -1019,8 +1031,10 @@ public class Profile extends AppCompatActivity implements LocationListener {
         } else if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             try {
+                openCamera.setVisibility(View.GONE);
                 photo = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                showCamera.setImageBitmap(CompressBitmap.scaleDown(photo, maxImageSize, true));
+                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
+//                showCamera.setImageBitmap(CompressBitmap.scaleDown(photo, maxImageSize, true));
             } catch (IOException e) {
                 e.printStackTrace();
             }

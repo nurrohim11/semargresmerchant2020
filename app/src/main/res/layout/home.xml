@@ -11,10 +11,9 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
@@ -27,6 +26,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:contentDescription="Logo"
+                android:layout_margin="@dimen/_10sdp"
                 android:padding="5dp"
                 android:src="@drawable/settings"
                 app:layout_constraintEnd_toEndOf="parent"

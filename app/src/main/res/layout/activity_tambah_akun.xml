@@ -167,42 +167,43 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/invisible_red" />
 
-            <RelativeLayout
-                android:layout_marginTop="@dimen/margin_default"
-                android:id="@+id/layoutGambar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/heightImageView"
-                android:layout_below="@id/edt_repasswordAkun"
-                android:background="@drawable/background_keterangan_settingpromo">
+<!--            <RelativeLayout-->
+<!--                android:layout_marginTop="@dimen/margin_default"-->
+<!--                android:id="@+id/layoutGambar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/heightImageView"-->
+<!--                android:layout_below="@id/edt_repasswordAkun"-->
+<!--                android:background="@drawable/background_keterangan_settingpromo">-->
 
-                <ImageView
-                    android:id="@+id/showCameraProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/showCameraProfile"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="1dp" />-->
 
-                <ImageView
-                    android:id="@+id/openCameraProfile"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@mipmap/gallery"
-                    android:layout_marginStart="10dp" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/openCameraProfile"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:src="@mipmap/gallery"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:layout_marginStart="10dp" />-->
 
-                <ProgressBar
-                    android:id="@+id/pb_loading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:visibility="gone" />
-            </RelativeLayout>
+<!--                <ProgressBar-->
+<!--                    android:id="@+id/pb_loading"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:visibility="gone" />-->
+<!--            </RelativeLayout>-->
 
             <LinearLayout
                 android:id="@+id/layoutLatLong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/layoutGambar"
+                android:layout_below="@id/edt_repasswordAkun"
                 android:layout_marginTop="@dimen/margin_default"
                 android:orientation="horizontal"
                 android:weightSum="3"

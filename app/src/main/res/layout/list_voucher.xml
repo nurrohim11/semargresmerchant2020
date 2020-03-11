@@ -6,7 +6,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
         android:id="@+id/rv_container">
 
         <LinearLayout

@@ -592,6 +592,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
 //                        } else {
 
                         prepareDataProfileMerchant();
+                        finish();
 
 //                        }
 

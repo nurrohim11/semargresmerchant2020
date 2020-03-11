@@ -234,10 +234,10 @@ public class SettingKategoriKuponActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(SettingKategoriKuponActivity.this, HomeActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(SettingKategoriKuponActivity.this, HomeActivity.class);
+//        startActivity(i);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void showProgressDialog() {

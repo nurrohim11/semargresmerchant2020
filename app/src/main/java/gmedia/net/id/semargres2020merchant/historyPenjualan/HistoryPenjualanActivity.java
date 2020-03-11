@@ -28,8 +28,11 @@ import java.util.Date;
 
 import gmedia.net.id.semargres2020merchant.HomeActivity;
 import gmedia.net.id.semargres2020merchant.R;
+import gmedia.net.id.semargres2020merchant.historyPenjualan.volunteer.HistoryPenjualanVolunteerAdapter;
+import gmedia.net.id.semargres2020merchant.historyPenjualan.volunteer.HistoryPenjualanVolunterActivity;
 import gmedia.net.id.semargres2020merchant.util.ApiVolley;
 import gmedia.net.id.semargres2020merchant.util.FormatRupiah;
+import gmedia.net.id.semargres2020merchant.util.SessionManager;
 import gmedia.net.id.semargres2020merchant.util.URL;
 
 /**
@@ -37,50 +40,14 @@ import gmedia.net.id.semargres2020merchant.util.URL;
  */
 
 public class HistoryPenjualanActivity extends AppCompatActivity {
-//    private final String tanggal[] =
-//            {
-//                    "Jum'at, 23-06-2017",
-//                    "Rabu, 20-06-2017",
-//                    "Senin, 27-06-2017",
-//                    "Jum'at, 23-06-2017",
-//                    "Rabu, 20-06-2017",
-//                    "Senin, 27-06-2017"
-//            };
-//    private final String email[] =
-//            {
-//                    "hsx@gmail.com",
-//                    "hahaha@gmail.com",
-//                    "hihhi@gmail.com",
-//                    "hsx@gmail.com",
-//                    "hahaha@gmail.com",
-//                    "hihhi@gmail.com"
-//            };
-//    private final String jumlah_kupon[] =
-//            {
-//                    "450",
-//                    "250",
-//                    "500",
-//                    "450",
-//                    "250",
-//                    "500"
-//            };
-//    private final String total_belanja[] =
-//            {
-//                    "Rp 250.000",
-//                    "Rp 150.000",
-//                    "Rp 550.000",
-//                    "Rp 250.000",
-//                    "Rp 150.000",
-//                    "Rp 550.000"
-//            };
-//    int total;
 
-    Integer start = 0, count = 10;
+    Integer start = 0, count = 20;
     private RecyclerView rvView;
     private HistoryPenjualanAdapter adapter;
-    private ArrayList<HistoryPenjualanModel> historyPenjualan;
+    private ArrayList<HistoryPenjualanModel> historyPenjualan = new ArrayList<>();
     private ArrayList<HistoryPenjualanModel> historyBaru;
     private ProgressDialog progressDialog;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,21 +68,15 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-//        RelativeLayout back = findViewById(R.id.backHistoryPenjualan);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
+        sessionManager = new SessionManager(this);
+        Toast.makeText(this, sessionManager.getUid(), Toast.LENGTH_SHORT).show();
 
         rvView = findViewById(R.id.rv_history_penjualan);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HistoryPenjualanActivity.this);
         rvView.setLayoutManager(layoutManager);
-
+        setupListHistoryPenjualan();
+        setupListScrollListenerHistoryPenjualan();
         prepareDataHistoryPenjualan();
-//        HistoryPenjualanModel history = historyPenjualan.get(2);
-//        ArrayList<HistoryPenjualanModel> historyPenjualan = prepareDataHistoryPenjualan();
 
     }
 
@@ -128,34 +89,25 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
     }
 
     private void prepareDataHistoryPenjualan() {
-//        final String string = "";
-//
-//        final JSONObject jBody = new JSONObject();
-//
-//        if(string == "awal"){
-//            try {
-//                jBody.put("start", "0");
-//                jBody.put("limit", "10");
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        else if (string == "load"){
-//            try {
-//                jBody.put("start", start);
-//                jBody.put("limit", count);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
         showProgressDialog();
 
-        new ApiVolley(this, new JSONObject(), "POST", URL.urlHistoryPenjualan, "", "", 0, new ApiVolley.VolleyCallback() {
+        if(start == 0){
+            historyPenjualan.clear();
+            dismissProgressDialog();
+        }
+
+        JSONObject params = new JSONObject();
+        try {
+            params.put("start",start);
+            params.put("limit",count);
+            params.put("id_merchant",sessionManager.getUid());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        new ApiVolley(this, params, "POST", URL.urlHistoryPenjualan, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
-                historyPenjualan = new ArrayList<>();
-//                historyBaru = new ArrayList<>();
                 dismissProgressDialog();
                 try {
                     JSONObject object = new JSONObject(result);
@@ -183,15 +135,13 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
                                     isi.getString("user_insert")
                             ));
                         }
-
-                        rvView.setAdapter(null);
-                        adapter = new HistoryPenjualanAdapter(HistoryPenjualanActivity.this, historyPenjualan);
-                        rvView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                        dismissProgressDialog();
                     }
                 } catch (JSONException e) {
+                    dismissProgressDialog();
                     e.printStackTrace();
                 }
             }
@@ -226,18 +176,27 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
 
     }
 
-//    /*private ArrayList<HistoryPenjualanModel> prepareDataHistoryPenjualan() {
-//            ArrayList<HistoryPenjualanModel> rvKuis = new ArrayList<>();
-//            for (int i = 0; i < tanggal.length; i++) {
-//                HistoryPenjualanModel custom = new HistoryPenjualanModel();
-//                custom.setTanggal(tanggal[i]);
-//                custom.setEmail(email[i]);
-//                custom.setJumlah_kupon(jumlah_kupon[i]);
-//                custom.setTotal_belanja(total_belanja[i]);
-//                rvKuis.add(custom);
-//            }
-//            return rvKuis;
-//    }*/
+    private void setupListHistoryPenjualan() {
+        adapter = new HistoryPenjualanAdapter(HistoryPenjualanActivity.this, historyPenjualan);
+        rvView.setLayoutManager(new LinearLayoutManager(HistoryPenjualanActivity.this));
+        rvView.setAdapter(adapter);
+    }
+
+    private void setupListScrollListenerHistoryPenjualan() {
+        rvView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                if (! recyclerView.canScrollVertically(1)) {
+                    start += count;
+                    prepareDataHistoryPenjualan();
+                }
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {

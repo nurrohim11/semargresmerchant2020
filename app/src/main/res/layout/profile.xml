@@ -509,6 +509,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/heightImageView"
+                android:id="@+id/rv_profil"
                 android:background="@drawable/background_keterangan_settingpromo">
 
                 <ImageView
@@ -539,6 +540,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FF0000"
+                android:id="@+id/tv_notes"
                 android:text="* ukuran 720x490" />
 
             <LinearLayout

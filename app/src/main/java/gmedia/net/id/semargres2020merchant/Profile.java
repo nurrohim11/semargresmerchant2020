@@ -143,6 +143,8 @@ public class Profile extends AppCompatActivity implements LocationListener {
     private String bitmapString = "";
     private ProgressBar pbLoading;
     ScrollView svContainer;
+    RelativeLayout rv_profil;
+    TextView tvNotes;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -186,6 +188,8 @@ public class Profile extends AppCompatActivity implements LocationListener {
         svContainer = findViewById(R.id.sv_container);
         svContainer.setVerticalScrollBarEnabled(false);
         svContainer.setHorizontalScrollBarEnabled(false);
+        rv_profil = findViewById(R.id.rv_profil);
+        tvNotes= findViewById(R.id.tv_notes);
 
         session = new SessionManager(getApplicationContext());
 
@@ -198,6 +202,8 @@ public class Profile extends AppCompatActivity implements LocationListener {
             layout6.setVisibility(View.GONE);
             layout7.setVisibility(View.GONE);
             layout8.setVisibility(View.GONE);
+            rv_profil.setVisibility(View.GONE);
+            tvNotes.setVisibility(View.GONE);
 
             email.setEnabled(false);
 
@@ -1033,8 +1039,8 @@ public class Profile extends AppCompatActivity implements LocationListener {
             try {
                 openCamera.setVisibility(View.GONE);
                 photo = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
-//                showCamera.setImageBitmap(CompressBitmap.scaleDown(photo, maxImageSize, true));
+//                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
+                showCamera.setImageBitmap(CompressBitmap.scaleDown(photo, maxImageSize, true));
             } catch (IOException e) {
                 e.printStackTrace();
             }

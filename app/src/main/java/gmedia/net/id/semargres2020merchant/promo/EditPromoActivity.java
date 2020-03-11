@@ -42,6 +42,7 @@ import java.util.ArrayList;
 
 import gmedia.net.id.semargres2020merchant.R;
 import gmedia.net.id.semargres2020merchant.util.ApiVolley;
+import gmedia.net.id.semargres2020merchant.util.CompressBitmap;
 import gmedia.net.id.semargres2020merchant.util.CustomKategoriModel;
 import gmedia.net.id.semargres2020merchant.util.EncodeBitmapToString;
 import gmedia.net.id.semargres2020merchant.util.HideKeyboard;
@@ -64,6 +65,7 @@ public class EditPromoActivity extends AppCompatActivity {
     private String selectedKategori = "";
     private ArrayAdapter<CustomKategoriModel> adapter;
     ScrollView svContainer;
+    float maxImageSize = 512;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -333,7 +335,8 @@ public class EditPromoActivity extends AppCompatActivity {
             try {
                 openCamera.setVisibility(View.GONE);
                 photo = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
+//                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
+                showCamera.setImageBitmap(CompressBitmap.scaleDown(photo, maxImageSize, true));
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 import gmedia.net.id.semargres2020merchant.R;
 import gmedia.net.id.semargres2020merchant.util.ApiVolley;
+import gmedia.net.id.semargres2020merchant.util.CompressBitmap;
 import gmedia.net.id.semargres2020merchant.util.CustomKategoriModel;
 import gmedia.net.id.semargres2020merchant.util.EncodeBitmapToString;
 import gmedia.net.id.semargres2020merchant.util.HideKeyboard;
@@ -407,7 +408,8 @@ public class SettingPromoActivity extends AppCompatActivity {
             try {
                 openCamera.setVisibility(View.GONE);
                 photo = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
+//                showCamera.setImageBitmap(Bitmap.createScaledBitmap(photo, 720, 490, true));
+                showCamera.setImageBitmap(CompressBitmap.scaleDown(photo, 512, true));
             } catch (IOException e) {
                 e.printStackTrace();
             }

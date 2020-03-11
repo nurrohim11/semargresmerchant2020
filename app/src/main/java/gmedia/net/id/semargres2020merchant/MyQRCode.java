@@ -201,6 +201,7 @@ public class MyQRCode extends AppCompatActivity {
         new ApiVolley(context, new JSONObject(), "GET", gmedia.net.id.semargres2020merchant.util.URL.urlQrCodeTenant, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
+                Log.d(">>>>>",result);
                 proses.DismissDialog();
                 try {
                     JSONObject object = new JSONObject(result);

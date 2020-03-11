@@ -65,10 +65,11 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
     TextView textLatitude, textLongitude;
     Bitmap bitmap;
     private ArrayList<SettingKategoriKuponModel> array_kategori_tambah_akun;
-    private Spinner sp_kategori_tambah_akun, sp_tambah_akun;
+    private Spinner sp_tambah_akun;
+//    private Spinner sp_kategori_tambah_akun;
     private EditText edtNama, edtUsername, edtPassword, edtRePassword, edtAlamat;
     private Button saveAkun;
-    private String kategori_tambah_akun = "0";
+//    private String kategori_tambah_akun = "0";
     private String kategori_akun = "0";
     private ArrayList<CustomKategoriModel> kategori;
     private ImageView showCamera;
@@ -117,7 +118,7 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
 //            }
 //        });
 
-        sp_kategori_tambah_akun = findViewById(R.id.sp_tipe_kupon);
+//        sp_kategori_tambah_akun = findViewById(R.id.sp_tipe_kupon);
         sp_tambah_akun = findViewById(R.id.sp_kategori_akun);
         edtNama = findViewById(R.id.edt_namaKategori);
         edtUsername = findViewById(R.id.edt_usernameAkun);
@@ -302,8 +303,8 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
 
                         ArrayAdapter adapter = new ArrayAdapter(TambahAkunActivity.this, R.layout.layout_simple_list, array_kategori_tambah_akun);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        sp_kategori_tambah_akun.setAdapter(adapter);
-                        sp_kategori_tambah_akun.setSelection(0, true);
+//                        sp_kategori_tambah_akun.setAdapter(adapter);
+//                        sp_kategori_tambah_akun.setSelection(0, true);
 
                         saveAkun.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -352,9 +353,9 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                                     return;
                                 }
 
-                                kategori_tambah_akun = "0";
-                                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) sp_kategori_tambah_akun.getSelectedItem();
-                                kategori_tambah_akun = kategori.getId();
+//                                kategori_tambah_akun = "0";
+//                                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) sp_kategori_tambah_akun.getSelectedItem();
+//                                kategori_tambah_akun = kategori.getId();
 
                                 kategori_akun = "0";
                                 CustomKategoriModel customKategoriModel = (CustomKategoriModel) sp_tambah_akun.getSelectedItem();
@@ -405,7 +406,7 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
             jBody.put("username", edtUsername.getText());
             jBody.put("password", edtPassword.getText());
             jBody.put("re_password", edtRePassword.getText());
-            jBody.put("id_kategori_kupon", String.valueOf(kategori_tambah_akun));
+//            jBody.put("id_kategori_kupon", String.valueOf(kategori_tambah_akun));
             jBody.put("latitude", lokasi.latitude);
             jBody.put("longitude", lokasi.longitude);
             jBody.put("alamat", edtAlamat.getText().toString());

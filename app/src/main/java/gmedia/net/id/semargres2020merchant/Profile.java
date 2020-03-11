@@ -655,6 +655,7 @@ public class Profile extends AppCompatActivity implements LocationListener {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 //                        if(session.getFlag().equals("2")){
                         prepareDataProfileTenant();
+                        finish();
 //                        }
 //                        else{
 //                            prepareDataProfileMerchant();

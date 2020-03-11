@@ -81,26 +81,26 @@
                 android:layout_below="@id/txtAlamat"
                 android:inputType="text" />
 
-            <TextView
-                android:id="@+id/txtTipeKupon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edt_alamat"
-                android:layout_marginTop="@dimen/margin_default"
-                android:text="Tipe E-Kupon"
-                android:textSize="14sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/txtTipeKupon"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/edt_alamat"-->
+<!--                android:layout_marginTop="@dimen/margin_default"-->
+<!--                android:text="Tipe E-Kupon"-->
+<!--                android:textSize="14sp" />-->
 
-            <Spinner
-                android:id="@+id/sp_tipe_kupon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtTipeKupon" />
+<!--            <Spinner-->
+<!--                android:id="@+id/sp_tipe_kupon"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/txtTipeKupon" />-->
 
             <TextView
                 android:id="@+id/txtUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sp_tipe_kupon"
+                android:layout_below="@id/edt_alamat"
                 android:layout_marginTop="@dimen/margin_default"
                 android:text="Username"
                 android:textSize="14sp" />

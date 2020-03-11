@@ -71,21 +71,6 @@ public class SettingKategoriKuponActivity extends AppCompatActivity {
 
         getDataKupon();
 
-//        RelativeLayout back = findViewById(R.id.back);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-
-//        Button iv_tambah_kupon = findViewById(R.id.iv_tambah_kupon);
-//        iv_tambah_kupon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showTambahKupon();
-//            }
-//        });
     }
 
     @Override

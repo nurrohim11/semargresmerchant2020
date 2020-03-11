@@ -61,6 +61,9 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
             if(save.getString("type").equals("merchant")){
                 Intent intent = new Intent();
                 setResult(501,intent);
+            }else if(save.getString("type").equals("tenant")){
+                Intent intent = new Intent();
+                setResult(401, intent);
             }else{
                 Intent intent = new Intent();
                 setResult(601,intent);
@@ -84,9 +87,12 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(save.getString("type").equals("merchant")){
+        if(save.getString("type").equals("merchant")) {
             Intent intent = new Intent();
-            setResult(501,intent);
+            setResult(501, intent);
+        }else if(save.getString("type").equals("tenant")){
+            Intent intent = new Intent();
+            setResult(401, intent);
         }else{
             Intent intent = new Intent();
             setResult(601,intent);

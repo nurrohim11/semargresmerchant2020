@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -119,8 +120,10 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
                 TwoItemModel item = (TwoItemModel) spCaraBayar.getSelectedItem();
                 cara_bayar = item.getItem1();
 
-                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategori.getSelectedItem();
-                kategori_kupon = kategori.getId();
+                if (session.getFlag().equals("1")) {
+                    SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) spKategori.getSelectedItem();
+                    kategori_kupon = kategori.getId();
+                }
 
                 if(edtNominal.getText().toString().equals("")){
                     edtNominal.setError("Silahkan mengisi nominal belanja");
@@ -182,6 +185,8 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
             super.onActivityResult(requestCode, resultCode, data);
             if(requestCode == 501){
                 finish();
+            }else if(requestCode == 401){
+                finish();
             }
         }
     }
@@ -195,7 +200,7 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
             jBody.put("user_id", resultScanBarcode.getContents());
             jBody.put("total", edtNominal.getText().toString());
             jBody.put("cara_bayar", cara_bayar);
-            jBody.put("id_kategori_kupon", String.valueOf(kategori_kupon));
+            jBody.put("id_kategori_kupon", kategori_kupon);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -203,13 +208,13 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
         new ApiVolley(KirimScanQrMerActivity.this, jBody, "POST", URL.urlScanBarcodeMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
-
+                Log.d(">>>>>",result);
                 dismissProgressDialog();
                 try {
                     JSONObject object = new JSONObject(result);
-                    final String status = object.getJSONObject("response").getString("status");
-                    String message = object.getJSONObject("response").getString("message");
-                    if (status.equals("1")) {
+                    final String status = object.getJSONObject("metadata").getString("status");
+                    String message = object.getJSONObject("metadata").getString("message");
+                    if (status.equals("200")) {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                         JSONObject detail = object.getJSONObject("response");
 
@@ -218,7 +223,7 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
                         i.putExtra("nama", detail.getString("nama"));
                         i.putExtra("email", detail.getString("email"));
                         i.putExtra("telpon", detail.getString("no_telp"));
-                        i.putExtra("foto", detail.getString("foto"));
+                        i.putExtra("gambar", detail.getString("foto"));
                         i.putExtra("jumlah_kupon", detail.getString("jumlah_kupon"));
                         startActivityForResult(i,501);
 //                        finish();
@@ -264,14 +269,13 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
                         JSONObject detail = object.getJSONObject("response");
 
                         Intent i = new Intent(KirimScanQrMerActivity.this, BerhasilQrCodeActivity.class);
+                        i.putExtra("type", "tenant");
                         i.putExtra("nama", detail.getString("nama"));
                         i.putExtra("email", detail.getString("email"));
                         i.putExtra("telpon", detail.getString("no_telp"));
                         i.putExtra("gambar", detail.getString("foto"));
                         i.putExtra("jumlah_kupon", detail.getString("jumlah_kupon"));
-                        startActivity(i);
-                        finish();
-
+                        startActivityForResult(i,401);
                     } else {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     }

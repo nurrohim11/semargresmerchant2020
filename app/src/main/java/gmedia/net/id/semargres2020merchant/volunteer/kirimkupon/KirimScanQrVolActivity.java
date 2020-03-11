@@ -493,7 +493,6 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
                     final String status = object.getJSONObject("metadata").getString("status");
                     String message = object.getJSONObject("metadata").getString("message");
                     if (status.equals("200")) {
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                         JSONObject detail = object.getJSONObject("response");
 
                         Intent i = new Intent(KirimScanQrVolActivity.this, BerhasilQrCodeActivity.class);

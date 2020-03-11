@@ -100,7 +100,6 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
         try {
             params.put("start",start);
             params.put("limit",count);
-            params.put("id_merchant",sessionManager.getUid());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -200,10 +199,7 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(HistoryPenjualanActivity.this, HomeActivity.class);
-        startActivity(intent);
         finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void showProgressDialog(){

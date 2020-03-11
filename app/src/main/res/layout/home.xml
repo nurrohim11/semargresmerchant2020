@@ -348,6 +348,41 @@
                 card_view:cardPreventCornerOverlap="false"
                 card_view:cardUseCompatPadding="true">
 
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/menuSettingKupon"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/margin_default"-->
+<!--                    android:paddingBottom="@dimen/margin_default">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="30dp"-->
+<!--                        android:layout_marginEnd="30dp"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="45dp"-->
+<!--                            android:layout_height="45dp"-->
+<!--                            android:layout_weight="0.2"-->
+<!--                            android:src="@drawable/ic_kupon" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="30dp"-->
+<!--                            android:gravity="left"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_marginLeft="30dp"-->
+<!--                            android:text="Kategori E-Kupon"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
                 <LinearLayout
                     android:id="@+id/menuSettingKupon"
                     android:layout_width="match_parent"
@@ -357,23 +392,27 @@
                     android:paddingBottom="@dimen/margin_default">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_kupon" />
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/katagoriekupon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:layout_marginLeft="30dp"
+                            android:gravity="left"
+                            android:layout_weight="1"
                             android:text="Kategori E-Kupon"
                             android:textColor="#000000"
                             android:textSize="14sp" />
@@ -401,23 +440,27 @@
                     android:paddingBottom="@dimen/margin_default">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_create_tenant" />
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/bikinakuntenan" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:layout_marginLeft="30dp"
+                            android:gravity="left"
+                            android:layout_weight="1"
                             android:text="Tambah Akun Tenant"
                             android:textColor="#000000"
                             android:textSize="14sp" />
@@ -436,6 +479,40 @@
                 card_view:cardPreventCornerOverlap="false"
                 card_view:cardUseCompatPadding="true">
 
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/menuPromo"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/margin_default"-->
+<!--                    android:paddingBottom="@dimen/margin_default">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="30dp"-->
+<!--                        android:layout_marginEnd="30dp"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="45dp"-->
+<!--                            android:layout_height="45dp"-->
+<!--                            android:layout_weight="0.2"-->
+<!--                            android:src="@drawable/ic_percentage" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="30dp"-->
+<!--                            android:layout_marginLeft="30dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="Buat Promo"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
                 <LinearLayout
                     android:id="@+id/menuPromo"
                     android:layout_width="match_parent"
@@ -445,53 +522,31 @@
                     android:paddingBottom="@dimen/margin_default">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_percentage" />
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/ccccpromo" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:layout_marginLeft="30dp"
+                            android:gravity="left"
+                            android:layout_weight="1"
                             android:text="Buat Promo"
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
-                    <!--<RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.5">
-
-                        <ImageView
-                            android:layout_width="@dimen/gambarMenuUtama"
-                            android:layout_height="@dimen/gambarMenuUtama"
-                            android:layout_alignParentRight="true"
-                            android:src="@drawable/icon_create_promo_baru" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3.5">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:text="Create Promo"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </RelativeLayout>-->
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -506,6 +561,38 @@
                 card_view:cardPreventCornerOverlap="false"
                 card_view:cardUseCompatPadding="true">
 
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/menuCreateKupon"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/margin_default"-->
+<!--                    android:paddingBottom="@dimen/margin_default">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="60dp"-->
+<!--                        android:layout_marginLeft="60dp"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="45dp"-->
+<!--                            android:layout_height="45dp"-->
+<!--                            android:src="@drawable/ic_kirim" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="30dp"-->
+<!--                            android:layout_marginLeft="30dp"-->
+<!--                            android:text="Kirim E-Kupon"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
                 <LinearLayout
                     android:id="@+id/menuCreateKupon"
                     android:layout_width="match_parent"
@@ -515,23 +602,27 @@
                     android:paddingBottom="@dimen/margin_default">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_kirim" />
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/send_kupon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:layout_marginLeft="30dp"
+                            android:gravity="left"
+                            android:layout_weight="1"
                             android:text="Kirim E-Kupon"
                             android:textColor="#000000"
                             android:textSize="14sp" />
@@ -722,6 +813,38 @@
                 card_view:cardPreventCornerOverlap="false"
                 card_view:cardUseCompatPadding="true">
 
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/menuInfoPenjualan"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/margin_default"-->
+<!--                    android:paddingBottom="@dimen/margin_default">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="60dp"-->
+<!--                        android:layout_marginLeft="60dp"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="45dp"-->
+<!--                            android:layout_height="45dp"-->
+<!--                            android:src="@drawable/ic_history_ekupon" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="30dp"-->
+<!--                            android:layout_marginLeft="30dp"-->
+<!--                            android:text="History E-Kupon"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
                 <LinearLayout
                     android:id="@+id/menuInfoPenjualan"
                     android:layout_width="match_parent"
@@ -731,23 +854,27 @@
                     android:paddingBottom="@dimen/margin_default">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_history_ekupon" />
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/hhhhkupon" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:layout_marginLeft="30dp"
+                            android:gravity="left"
+                            android:layout_weight="1"
                             android:text="History E-Kupon"
                             android:textColor="#000000"
                             android:textSize="14sp" />
@@ -766,6 +893,37 @@
                 card_view:cardPreventCornerOverlap="false"
                 card_view:cardUseCompatPadding="true">
 
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/menuBuatKuis"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/margin_default"-->
+<!--                    android:paddingBottom="@dimen/margin_default">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="60dp"-->
+<!--                        android:layout_marginLeft="60dp"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="45dp"-->
+<!--                            android:layout_height="45dp"-->
+<!--                            android:src="@drawable/ic_kuis" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="30dp"-->
+<!--                            android:layout_marginLeft="30dp"-->
+<!--                            android:text="Buat Kuis"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:textSize="14sp" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
                 <LinearLayout
                     android:id="@+id/menuBuatKuis"
                     android:layout_width="match_parent"
@@ -775,23 +933,27 @@
                     android:paddingBottom="@dimen/margin_default">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_kuis" />
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/bbbkuis" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:layout_marginLeft="30dp"
+                            android:gravity="left"
+                            android:layout_weight="1"
                             android:text="Buat Kuis"
                             android:textColor="#000000"
                             android:textSize="14sp" />

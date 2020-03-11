@@ -69,7 +69,7 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
         }
 
         sessionManager = new SessionManager(this);
-        Toast.makeText(this, sessionManager.getUid(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, sessionManager.getUid(), Toast.LENGTH_SHORT).show();
 
         rvView = findViewById(R.id.rv_history_penjualan);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HistoryPenjualanActivity.this);

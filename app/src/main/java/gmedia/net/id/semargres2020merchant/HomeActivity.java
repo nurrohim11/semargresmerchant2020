@@ -7,7 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -37,6 +43,8 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +57,8 @@ import gmedia.net.id.semargres2020merchant.historyPenjualan.volunteer.HistoryPen
 import gmedia.net.id.semargres2020merchant.merchant.KirimEmailMerActivity;
 import gmedia.net.id.semargres2020merchant.merchant.KirimScanQrMerActivity;
 import gmedia.net.id.semargres2020merchant.merchant.KirimSmsMerActivity;
+import gmedia.net.id.semargres2020merchant.util.CircleTransform;
+import gmedia.net.id.semargres2020merchant.util.Utils;
 import gmedia.net.id.semargres2020merchant.volunteer.kirimkupon.KirimEmailVolActivity;
 import gmedia.net.id.semargres2020merchant.volunteer.kirimkupon.KirimScanQrVolActivity;
 import gmedia.net.id.semargres2020merchant.volunteer.kirimkupon.KirimSmsVolActivity;
@@ -109,6 +119,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
     public static TextView tvMerchant;
     private String keyword_merchant="";
     private int start =0, count=20;
+    ImageView imageHome;
 
     public static TextView tvMerchantEmail;
 
@@ -137,6 +148,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
         textHome = findViewById(R.id.textHome);
         namaMerchant = findViewById(R.id.namaMerchantHome);
         textSisaKupon = findViewById(R.id.textSisaKupon);
+        imageHome = findViewById(R.id.imageHome);
 
 //        Setting pojok kanan atas
         final ImageView menuSetting = findViewById(R.id.logo_setting);
@@ -837,6 +849,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
         new ApiVolley(HomeActivity.this, new JSONObject(), "GET", URL.urlDashboardTenant, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
+                Log.d(">>>>>", result);
                 try {
                     JSONObject object = new JSONObject(result);
                     String status = object.getJSONObject("metadata").getString("message");
@@ -876,6 +889,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
         new ApiVolley(HomeActivity.this, new JSONObject(), "GET", URL.urlProfile, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
+                Log.d(">>>>>>",result);
                 try {
                     JSONObject object = new JSONObject(result);
                     final String status = object.getJSONObject("metadata").getString("message");
@@ -886,6 +900,12 @@ public class HomeActivity extends RuntimePermissionsActivity {
                         else{
                             textHome.setText(object.getJSONObject("response").getString("nama"));
                         }
+
+                        Picasso.with(HomeActivity.this).load(object.getJSONObject("response").getString("foto"))
+                                .resize(275, 256)
+                                .transform(new Utils.RoundedTransformation(30, 0))
+                                .into(imageHome);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -908,6 +928,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
                     JSONObject object = new JSONObject(result);
                     final String status = object.getJSONObject("metadata").getString("status");
                     if (status.equals("200")) {
+//                        Log.d(">>>>>profil", String.valueOf(object.getJSONObject("response")));
                         textHome.setText(object.getJSONObject("response").getJSONObject("profil").getString("nama_tenant"));
                     }
                 } catch (JSONException e) {
@@ -1147,4 +1168,5 @@ public class HomeActivity extends RuntimePermissionsActivity {
             }
         }, 2000);
     }
+
 }

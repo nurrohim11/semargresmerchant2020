@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -55,6 +56,8 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
     String cara_bayar="",kategori_kupon="";
     SessionManager session;
     private ProgressDialog progressDialog;
+    LinearLayout llKategori;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +90,14 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
         spKategori = findViewById(R.id.sp_kategori);
         spCaraBayar = findViewById(R.id.sp_cara_bayar);
         edtNominal = findViewById(R.id.edt_nominal);
+
+        llKategori = findViewById(R.id.ll_kategori);
+        if (session.getFlag().equals("2")) {
+            llKategori.setVisibility(View.GONE);
+        }else{
+            llKategori.setVisibility(View.VISIBLE);
+        }
+
         btnKirim = findViewById(R.id.btn_send);
     }
 

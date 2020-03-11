@@ -58,6 +58,7 @@ public class KirimSmsMerActivity extends AppCompatActivity {
     private ArrayList<SettingKategoriKuponModel> dataSet;
     SessionManager session;
     private ProgressDialog progressDialog;
+    LinearLayout llKategori;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,12 @@ public class KirimSmsMerActivity extends AppCompatActivity {
         edtNominal = findViewById(R.id.edt_nominal);
         spCaraBayar = (Spinner) findViewById(R.id.sp_cara_bayar);
         spKategori = (Spinner) findViewById(R.id.sp_kategori);
+        llKategori = findViewById(R.id.ll_kategori);
+        if (session.getFlag().equals("2")) {
+            llKategori.setVisibility(View.GONE);
+        }else{
+            llKategori.setVisibility(View.VISIBLE);
+        }
         btnKirim = findViewById(R.id.btn_send);
     }
 

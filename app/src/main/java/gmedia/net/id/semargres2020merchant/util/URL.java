@@ -85,7 +85,7 @@ public class URL {
     public static String urlKuisJawaban = baseURL + "merchant/quiz/answer";
     public static String urlKuisSetWinner = baseURL + "merchant/quiz/set_winner";
 
-    public static String urlProfileTenant = baseURL + "tenant/profile";
+//    public static String urlProfileTenant = baseURL + "tenant/profile";
     public static String urlUpdateProfileTenant = baseURL + "tenant/profile/update";
 
     public static String urlKuponCheckOTP = baseURL + "kupon/check_otp";
@@ -99,6 +99,7 @@ public class URL {
     public static String urlSendSmsTenant = baseURL + "api/tenant/kupon/send_via_sms";
 
     public static String urlDashboardTenant = baseURL + "tenant/dashboard";
+    public static String urlProfileTenant = baseURL+"tenant/profile";
 
     public static String urlKirimSemua = baseURL + "merchant/qrcode/send_email/all";
     public static String urlKirim = baseURL + "merchant/qrcode/send_email";

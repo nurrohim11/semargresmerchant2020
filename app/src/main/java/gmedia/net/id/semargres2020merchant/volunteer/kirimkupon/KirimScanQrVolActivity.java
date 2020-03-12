@@ -236,7 +236,7 @@ public class KirimScanQrVolActivity extends RuntimePermissionsActivity implement
 
             if (resultScanBarcode.getContents() != null) {
                 // TODO to action if after scan barcode
-                Toast.makeText(this, resultScanBarcode.getContents(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, resultScanBarcode.getContents(), Toast.LENGTH_SHORT).show();
                 prepareDataScanBarcode();
             }
         } else {

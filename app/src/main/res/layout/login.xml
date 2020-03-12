@@ -103,10 +103,10 @@
 
     <ImageView
         android:id="@+id/logo_login"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="264dp"
         android:contentDescription="Logo"
-        android:src="@drawable/semargres"
+        android:src="@drawable/launcher_icon"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h2"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v4"
         app:layout_constraintStart_toStartOf="@+id/guideline_v5"

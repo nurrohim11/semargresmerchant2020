@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -11,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -20,7 +22,7 @@ import gmedia.net.id.semargres2020merchant.R;
 import gmedia.net.id.semargres2020merchant.util.CircleTransform;
 
 public class BerhasilQrCodeActivity extends AppCompatActivity {
-    TextView nama, telpon, email, jumlah_kupon;
+    TextView nama, telpon, email, jumlah_kupon, tvUser;
     ImageView gambar;
     Toolbar toolbar;
     Bundle save;
@@ -42,6 +44,8 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
         email = findViewById(R.id.emailHasilScanBarcode);
         jumlah_kupon = findViewById(R.id.jumlahKuponHasilScanBarcode);
         gambar = findViewById(R.id.fotoHasilScanBarcode);
+        tvUser = findViewById(R.id.tv_user);
+
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,6 +56,7 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
         }
 
         save = getIntent().getExtras();
+
         prepareDataHasilScanBarcode();
     }
 
@@ -78,9 +83,28 @@ public class BerhasilQrCodeActivity extends AppCompatActivity {
             nama.setText(save.getString("nama", ""));
             email.setText(save.getString("email", ""));
             telpon.setText(save.getString("telpon", ""));
-            Picasso.with(BerhasilQrCodeActivity.this).load(save.getString("gambar", ""))
+            if(save.getString("gambar","").isEmpty()){
+                tvUser.setVisibility(View.VISIBLE);
+                if(!save.getString("nama","").isEmpty()){
+                    tvUser.setText(save.getString("nama", "").substring(0,1).toUpperCase());
+                }else if(!save.getString("email","").isEmpty()){
+                    tvUser.setText(save.getString("email", "").substring(0,1).toUpperCase());
+                }else if(!save.getString("telpon","").isEmpty()){
+                    tvUser.setText(save.getString("telpon", "").substring(0,1).toUpperCase());
+                }else{
+                    tvUser.setText("E");
+                }
+            }else{
+                tvUser.setVisibility(View.GONE);
+            }
+            Picasso
+                    .with(BerhasilQrCodeActivity.this)
+                    .load(save.getString("gambar", "").isEmpty() ? null : save.getString("gambar",""))
+//                    .load(String.valueOf(save.getString("gambar","") != null ? save.getString("gambar","") : R.drawable.background_upload_profile))
                     .networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE)
-                    .transform(new CircleTransform()).into(gambar);
+                    .transform(new CircleTransform())
+                    .into(gambar);
+
             jumlah_kupon.setText(save.getString("jumlah_kupon", ""));
         }
     }

@@ -91,7 +91,7 @@
                     android:baselineAligned="false"
                     android:paddingStart="5dp">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.4"
@@ -101,7 +101,17 @@
                             android:id="@+id/fotoHasilScanBarcode"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
-                    </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_50sdp"
+                            android:text="R"
+                            android:textColor="#fff"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_user"
+                            android:gravity="center"
+                            android:layout_centerInParent="true"/>
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="0dp"

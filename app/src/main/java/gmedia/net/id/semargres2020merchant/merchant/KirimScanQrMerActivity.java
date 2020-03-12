@@ -226,7 +226,6 @@ public class KirimScanQrMerActivity extends RuntimePermissionsActivity {
                         i.putExtra("gambar", detail.getString("foto"));
                         i.putExtra("jumlah_kupon", detail.getString("jumlah_kupon"));
                         startActivityForResult(i,501);
-//                        finish();
                     } else {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     }

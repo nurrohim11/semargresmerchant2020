@@ -902,7 +902,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
                         }
 
                         Picasso.with(HomeActivity.this).load(object.getJSONObject("response").getString("foto"))
-                                .resize(275, 256)
+                                //.resize(275, 256)
                                 .transform(new Utils.RoundedTransformation(30, 0))
                                 .into(imageHome);
 

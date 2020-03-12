@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SemargresMerchant.iml" filepath="$PROJECT_DIR$/SemargresMerchant.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/appcustommodule/appcustommodule.iml" filepath="$PROJECT_DIR$/appcustommodule/appcustommodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semargresmerchant2020.iml" filepath="$PROJECT_DIR$/semargresmerchant2020.iml" />
       <module fileurl="file://$PROJECT_DIR$/zxing-android-embedded/zxing-android-embedded.iml" filepath="$PROJECT_DIR$/zxing-android-embedded/zxing-android-embedded.iml" />
     </modules>
   </component>

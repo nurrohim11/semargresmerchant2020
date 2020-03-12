@@ -50,59 +50,6 @@ public class CreatePromoActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CreatePromoActivity.this);
         rvView.setLayoutManager(layoutManager);
 
-
-//        RelativeLayout back = findViewById(R.id.back);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-
-//        RelativeLayout home = findViewById(R.id.btnHomeCreatePromo);
-//        RelativeLayout logout = findViewById(R.id.btnLogout);
-//        final ImageView gbrHome = findViewById(R.id.gambarHome);
-//        final ImageView gbrLogout = findViewById(R.id.gambarLogout);
-//        final TextView txtGbrHome = findViewById(R.id.textGambarHome);
-//        final TextView txtGbrLogout = findViewById(R.id.textGambarLogout);
-
-//        home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                gbrHome.setImageResource(R.drawable.home_grey);
-//                txtGbrHome.setTextColor(Color.parseColor("#FF5F5D5D"));
-//                gbrLogout.setImageResource(R.drawable.logout_red);
-//                txtGbrLogout.setTextColor(Color.parseColor("#e40112"));
-//                final Dialog dialog = new Dialog(CreatePromoActivity.this);
-//                dialog.setContentView(R.layout.popup_logout);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                RelativeLayout ya = dialog.findViewById(R.id.logoutYa);
-//                RelativeLayout tidak = dialog.findViewById(R.id.logoutTidak);
-//                ya.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        session.logoutUser();
-//                    }
-//                });
-//                tidak.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        gbrLogout.setImageResource(R.drawable.logout_grey);
-//                        txtGbrLogout.setTextColor(Color.parseColor("#FF5F5D5D"));
-//                        dialog.dismiss();
-//                    }
-//                });
-//                dialog.setCanceledOnTouchOutside(false);
-//                dialog.show();
-//            }
-//        });
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){

@@ -35,10 +35,6 @@ import gmedia.net.id.semargres2020merchant.util.FormatRupiah;
 import gmedia.net.id.semargres2020merchant.util.SessionManager;
 import gmedia.net.id.semargres2020merchant.util.URL;
 
-/**
- * Created by Bayu on 22/03/2018.
- */
-
 public class HistoryPenjualanActivity extends AppCompatActivity {
 
     Integer start = 0, count = 20;
@@ -69,8 +65,6 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
         }
 
         sessionManager = new SessionManager(this);
-//        Toast.makeText(this, sessionManager.getUid(), Toast.LENGTH_SHORT).show();
-
         rvView = findViewById(R.id.rv_history_penjualan);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HistoryPenjualanActivity.this);
         rvView.setLayoutManager(layoutManager);
@@ -157,7 +151,6 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
 
         if (date != null && !date.equals("") && !date.equals(null)) {
 
-//            String result = date;
             @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat(formatDateFrom);
             @SuppressLint("SimpleDateFormat") SimpleDateFormat sdfCustom = new SimpleDateFormat(formatDateTo);
 

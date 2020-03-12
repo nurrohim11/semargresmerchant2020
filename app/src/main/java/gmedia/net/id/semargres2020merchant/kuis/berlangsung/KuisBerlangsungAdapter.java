@@ -50,10 +50,6 @@ public class KuisBerlangsungAdapter extends RecyclerView.Adapter<KuisBerlangsung
             Date newDateStart = dateFormat.parse(model.getPeriode_start());
             Date newDateEnd = dateFormat.parse(model.getPeriode_end());
 
-//            dateFormat = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
-//            String dateStart = dateFormat.format(newDateStart);
-//            String dateEnd = dateFormat.format(newDateEnd);
-
             String dateStartCustom = Utils.dateFormat("dd MMM").format(newDateStart);
             String dateEndCustom = Utils.dateFormat("dd MMM yyyy").format(newDateEnd);
 
@@ -67,8 +63,6 @@ public class KuisBerlangsungAdapter extends RecyclerView.Adapter<KuisBerlangsung
         }
 
         viewHolder.txtSoalBerlangsung.setText(model.getSoal());
-//        viewHolder.txtStartBerlangsung.setText(model.getPeriode_start());
-//        viewHolder.txtEndtBerlangsung.setText(model.getPeriode_end());
         viewHolder.txtHadiahBerlangsung.setText(model.getHadiah());
 
         final String finalTanggalMulai = tanggalMulai;

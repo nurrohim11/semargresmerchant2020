@@ -26,10 +26,6 @@ import gmedia.net.id.semargres2020merchant.util.ApiVolley;
 import gmedia.net.id.semargres2020merchant.util.FourItemModel;
 import gmedia.net.id.semargres2020merchant.util.URL;
 
-/**
- * Created by Bayu on 19/03/2018.
- */
-
 public class ListAkunAdapter extends RecyclerView.Adapter<ListAkunAdapter.ViewHolder> {
     public static ArrayList<FourItemModel> rvData;
     private Context context;
@@ -131,7 +127,6 @@ public class ListAkunAdapter extends RecyclerView.Adapter<ListAkunAdapter.ViewHo
                             final String status = object.getJSONObject("metadata").getString("status");
                             String message = object.getJSONObject("metadata").getString("message");
                             if (status.equals("200")) {
-//                                Toast.makeText(context,message,Toast.LENGTH_LONG).show();
                                 Intent i = new Intent(context, MyQRCode.class);
                                 i.putExtra("qr_code", object.getJSONObject("response").getString("qr_code"));
                                 i.putExtra("nama", selectedItem.getItem2());

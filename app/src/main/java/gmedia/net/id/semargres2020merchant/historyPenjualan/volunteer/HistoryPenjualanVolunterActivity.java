@@ -191,7 +191,6 @@ public class HistoryPenjualanVolunterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 start =0;
                 count =10;
-//                historyPenjualan.clear();
                 adapter.notifyDataSetChanged();
                 prepareDataHistoryPenjualan("search");
             }
@@ -256,9 +255,6 @@ public class HistoryPenjualanVolunterActivity extends AppCompatActivity {
                         }
                         dismissProgressDialog();
                     }
-//                    else {
-//                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-//                    }
                 } catch (JSONException e) {
                     dismissProgressDialog();
                     e.printStackTrace();

@@ -112,31 +112,6 @@ public class DetailKuisBerlangsungActivity extends AppCompatActivity {
                         adapter = new DetailKuisBerlangsungAdapter(DetailKuisBerlangsungActivity.this, jawabanLama);
                         rvView.setAdapter(adapter);
 
-//                        rvView.setAdapter(null);
-//                        adapter = new DetailKuisBerlangsungAdapter(DetailKuisBerlangsungActivity.this, jawabanLama);
-//                        rvView.setAdapter(adapter);
-
-//                        for (int i = start; i < count; i++) {
-//                            if (i < jawabanLama.size()) {
-//                                jawabanBaru.add(jawabanLama.get(i));
-//                            }
-//                        }
-
-
-//                        EndlessScroll scrollListener = new EndlessScroll((LinearLayoutManager) layoutManager) {
-//                            @Override
-//                            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-//                                start += count;
-//                                for (int i = start; i < start + count; i++) {
-//                                    if (i < jawabanLama.size()) jawabanBaru.add(jawabanLama.get(i));
-//                                }
-//                                adapter.addMoreData();
-//                            }
-//                        };
-//                        rvView.addOnScrollListener(scrollListener);
-
-//                        Toast.makeText(DetailKuisBerlangsungActivity.this, message, Toast.LENGTH_LONG).show();
-
                     } else {
                         Toast.makeText(DetailKuisBerlangsungActivity.this, message, Toast.LENGTH_LONG).show();
                     }

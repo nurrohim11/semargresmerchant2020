@@ -775,7 +775,7 @@ public class HomeActivity extends RuntimePermissionsActivity {
                         if (!version.trim().equals(latestVersion.trim()) && link.length() > 0) {
 
                             final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-                            builder.setIcon(R.mipmap.ic_launcher)
+                            builder.setIcon(R.drawable.launcher_icon)
                                     .setTitle("Update")
                                     .setMessage("Versi terbaru " + latestVersion + " telah tersedia, mohon download versi terbaru.")
                                     .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {

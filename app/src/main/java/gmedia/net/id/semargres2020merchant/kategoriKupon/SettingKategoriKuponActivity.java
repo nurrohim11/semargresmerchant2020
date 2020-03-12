@@ -42,7 +42,6 @@ public class SettingKategoriKuponActivity extends AppCompatActivity {
     private RecyclerView rvView;
     private SettingKategoriKuponAdapter adapter;
     private ProgressDialog progressDialog;
-//    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,6 @@ public class SettingKategoriKuponActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.statusbar));
         }
-//        session = new SessionManager(getApplicationContext());
 
         rvView = findViewById(R.id.rv_kupon);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SettingKategoriKuponActivity.this);
@@ -164,7 +162,6 @@ public class SettingKategoriKuponActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-//                getDataKupon();
             }
 
             @Override
@@ -219,10 +216,7 @@ public class SettingKategoriKuponActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        Intent i = new Intent(SettingKategoriKuponActivity.this, HomeActivity.class);
-//        startActivity(i);
         finish();
-//        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     private void showProgressDialog() {

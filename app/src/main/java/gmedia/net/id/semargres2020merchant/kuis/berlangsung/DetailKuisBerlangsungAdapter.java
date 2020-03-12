@@ -52,67 +52,6 @@ public class DetailKuisBerlangsungAdapter extends RecyclerView.Adapter<DetailKui
         viewHolder.txt_jawabanKuis.setText(modelJawaban.getJawaban());
         viewHolder.txt_namaKuis.setText(modelJawaban.getNama_user());
 
-//        viewHolder.nextBerlangsung.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Dialog dialog = new Dialog(context);
-//                dialog.setContentView(R.layout.popup_pilih_pemenang);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                TextView textView = dialog.findViewById(R.id.txt_namaPemenang);
-//                String pemenang = "Apakah Anda yakin memilih "+modelJawaban.getNama_user()+" sebagai pemenang?";
-//                textView.setText(pemenang);
-//
-//                Button btnYa = dialog.findViewById(R.id.btn_ya);
-//                btnYa.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        final JSONObject jBody = new JSONObject();
-//                        try {
-//                            jBody.put("id_jawaban", modelJawaban.getId());
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        new ApiVolley(context, jBody, "POST", URL.urlKuisSetWinner, "", "", 0, new ApiVolley.VolleyCallback() {
-//                            @Override
-//                            public void onSuccess(String result) {
-//                                try {
-//                                    JSONObject object = new JSONObject(result);
-//                                    Log.d("hasil set", object.toString());
-//                                    final String status = object.getJSONObject("metadata").getString("status");
-//                                    final String message = object.getJSONObject("metadata").getString("message");
-//                                    if (status.equals("200")) {
-//                                        Toast.makeText(context, "Pemenang berhasil dipilih", Toast.LENGTH_SHORT).show();
-//                                        context.startActivity(new Intent(context, KuisActivity.class));
-//                                    }
-//                                    else{
-//                                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-//                                    }
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onError(String result) {
-//                                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-//                            }
-//                        });
-//                    }
-//                });
-//
-//                Button btnTidak = dialog.findViewById(R.id.btn_tidak);
-//                btnTidak.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                dialog.show();
-//            }
-//        });
-
     }
 
     @Override

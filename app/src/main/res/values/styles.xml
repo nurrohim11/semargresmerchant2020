@@ -38,7 +38,7 @@
         <item name="colorControlNormal">@color/color_black</item>
     </style>
 
-    <style name="AppTheme.SplashScreen" parent="AppTheme.NoActionBar">
-        <item name="android:windowBackground">@drawable/splashscreenmerchant</item>
-    </style>
+<!--    <style name="AppTheme.SplashScreen" parent="AppTheme.NoActionBar">-->
+<!--        <item name="android:windowBackground">@drawable/splashscreenmerchant</item>-->
+<!--    </style>-->
 </resources>

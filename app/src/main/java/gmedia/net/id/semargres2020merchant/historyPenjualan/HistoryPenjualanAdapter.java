@@ -37,7 +37,6 @@ public class HistoryPenjualanAdapter extends RecyclerView.Adapter<HistoryPenjual
         holder.tanggal.setText(rvData.get(position).getTanggal());
         holder.email.setText(rvData.get(position).getEmail());
         holder.jumlah_kupon.setText(rvData.get(position).getJumlah_kupon());
-//        holder.total_belanja.setText(rvKuis.get(position).getTotal_belanja());
         holder.tvNama.setText(item.getNama());
         holder.tvJam.setText(item.getTime());
         holder.tvPemberi.setText(item.getUser());

@@ -66,10 +66,8 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
     Bitmap bitmap;
     private ArrayList<SettingKategoriKuponModel> array_kategori_tambah_akun;
     private Spinner sp_tambah_akun;
-//    private Spinner sp_kategori_tambah_akun;
     private EditText edtNama, edtUsername, edtPassword, edtRePassword, edtAlamat;
     private Button saveAkun;
-//    private String kategori_tambah_akun = "0";
     private String kategori_akun = "0";
     private ArrayList<CustomKategoriModel> kategori;
     private ImageView showCamera;
@@ -110,15 +108,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
         svContainer.setHorizontalScrollBarEnabled(false);
         svContainer.setVerticalScrollBarEnabled(false);
 
-//        RelativeLayout back = findViewById(R.id.back);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-
-//        sp_kategori_tambah_akun = findViewById(R.id.sp_tipe_kupon);
         sp_tambah_akun = findViewById(R.id.sp_kategori_akun);
         edtNama = findViewById(R.id.edt_namaKategori);
         edtUsername = findViewById(R.id.edt_usernameAkun);
@@ -130,11 +119,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
 
         textLatitude = findViewById(R.id.textLatitude);
         textLongitude = findViewById(R.id.textLongitude);
-
-//        showCamera = findViewById(R.id.showCameraProfile);
-//        showCamera.setImageDrawable(null);
-
-//        openCameraProfile = findViewById(R.id.openCameraProfile);
 
         pbLoading = findViewById(R.id.pb_loading);
 
@@ -172,7 +156,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
 
-//        getKategoriKupon();
         getKategori();
 
         //init lokasi
@@ -254,13 +237,10 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                                     isi.getString("nama")
                             ));
                         }
-//                        String isiSpinner = "Restoran";
                         adapter = new ArrayAdapter<>(TambahAkunActivity.this, R.layout.item_simple_item, kategori);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         sp_tambah_akun.setAdapter(adapter);
                         sp_tambah_akun.setSelection(0, true);
-//                        kategori.get()
-//                        prepareDataProfile();
                         getKategoriKupon();
                     }
                 } catch (JSONException e) {
@@ -299,12 +279,8 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                             ));
                         }
 
-//                        showTambahAkun(array_kategori_tambah_akun);
-
                         ArrayAdapter adapter = new ArrayAdapter(TambahAkunActivity.this, R.layout.layout_simple_list, array_kategori_tambah_akun);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        sp_kategori_tambah_akun.setAdapter(adapter);
-//                        sp_kategori_tambah_akun.setSelection(0, true);
 
                         saveAkun.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -352,10 +328,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                                     Toast.makeText(TambahAkunActivity.this, "Lokasi tidak ditemukan", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
-
-//                                kategori_tambah_akun = "0";
-//                                SettingKategoriKuponModel kategori = (SettingKategoriKuponModel) sp_kategori_tambah_akun.getSelectedItem();
-//                                kategori_tambah_akun = kategori.getId();
 
                                 kategori_akun = "0";
                                 CustomKategoriModel customKategoriModel = (CustomKategoriModel) sp_tambah_akun.getSelectedItem();
@@ -414,8 +386,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
             e.printStackTrace();
         }
 
-//        ApiVolley request = new ApiVolley(this, jBody, "POST", URL.urlTambahAkun, "", "", 0, new ApiVolley.VolleyCallback() {
-
         new ApiVolley(this, jBody, "POST", URL.urlStoreUserAkun, "", "", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
@@ -423,13 +393,9 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                 dismissProgressDialog();
                 try {
                     JSONObject object = new JSONObject(result);
-//                    Log.d("hasil save", object.toString());
                     String pesan = object.getJSONObject("metadata").getString("message");
                     String status = object.getJSONObject("metadata").getString("status");
                     if (status.equals("200")) {
-//                        Toast.makeText(getApplicationContext(), pesan, Toast.LENGTH_LONG).show();
-
-//                        startActivity(new Intent(TambahAkunActivity.this, ListAkunActivity.class));
                         Intent intent=new Intent();
                         setResult(101,intent);
                         finish();
@@ -467,26 +433,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                         marker = mMap.addMarker(new MarkerOptions().position(lokasi).title("Lokasi Customer").draggable(true));
                         marker.setPosition(lokasi);
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lokasi, 15.0f));
-
-//                        pbLoading.setVisibility(View.VISIBLE);
-//                        Picasso.with(TambahAkunActivity.this).load(object.getJSONObject("response").getString("foto"))
-//                                .networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE)
-//                                .into(showCamera, new Callback() {
-//                                    @Override
-//                                    public void onSuccess() {
-//                                        BitmapDrawable drawable = (BitmapDrawable) showCamera.getDrawable();
-//                                        bitmap = drawable.getBitmap();
-//                                        bitmap = CompressBitmap.scaleDown(bitmap, 460, true);
-////                                        bitmapString = bitmap != null ? EncodeBitmapToString.convert(bitmap) : "";
-//                                        pbLoading.setVisibility(View.GONE);
-//                                    }
-//
-//                                    @Override
-//                                    public void onError() {
-//
-//                                        pbLoading.setVisibility(View.GONE);
-//                                    }
-//                                });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -537,24 +483,6 @@ public class TambahAkunActivity extends AppCompatActivity implements OnMapReadyC
                 textLongitude.setText(String.valueOf(lokasi.longitude));
             }
         });
-
-        /*manager = new GoogleLocationManager(this, new GoogleLocationManager.LocationUpdateListener() {
-            @Override
-            public void onChange(Location location) {
-                if(marker == null){
-                    Log.d("custom_log", "latitude  " + location.getLatitude());
-                    Log.d("custom_log", "longitude " + location.getLongitude());
-                    lokasi = new LatLng(location.getLatitude(), location.getLongitude());
-
-                    marker = mMap.addMarker(new MarkerOptions().position(lokasi).title("Lokasi Customer").draggable(true));
-                    marker.setPosition(lokasi);
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lokasi, 15.0f));
-                    manager.stopLocationUpdates();
-                }
-            }
-        });
-        manager.startLocationUpdates();*/
-
         prepareDataLatLongi();
     }
 

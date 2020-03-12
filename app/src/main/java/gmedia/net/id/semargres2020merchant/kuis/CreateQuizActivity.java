@@ -59,8 +59,6 @@ public class CreateQuizActivity extends AppCompatActivity {
         }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.color_white), PorterDuff.Mode.SRC_ATOP);
-
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
@@ -177,12 +175,6 @@ public class CreateQuizActivity extends AppCompatActivity {
                         newDate.set(year, month, day);
                         final String tanggalUpload = dateFormatUpload.format(newDate.getTime());
                         final String tanggalShow = dateFormatShow.format(newDate.getTime());
-
-//                        if(yearEnd <= yearStart && monthEnd <= monthStart && dayEnd <= dayStart){
-//                            getCalendarEnd();
-//                            Toast.makeText(CreateQuizActivity.this, "Coba ulangi lagi", Toast.LENGTH_SHORT).show();
-//                            return;
-//                        }
 
                         periode_end.setText(tanggalShow);
                         endUpload = tanggalUpload;

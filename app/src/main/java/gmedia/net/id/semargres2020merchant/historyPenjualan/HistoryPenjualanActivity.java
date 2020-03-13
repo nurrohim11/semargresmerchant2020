@@ -105,9 +105,9 @@ public class HistoryPenjualanActivity extends AppCompatActivity {
                 try {
                     JSONObject object = new JSONObject(result);
                     Log.d("hasil object", object.toString());
-                    String status = object.getJSONObject("metadata").getString("status");
+                    int status = object.getJSONObject("metadata").getInt("status");
                     String message = object.getJSONObject("metadata").getString("message");
-                    if (status.equals("200")) {
+                    if (status == 200) {
                         JSONArray array = object.getJSONArray("response");
                         FormatRupiah request = new FormatRupiah();
                         for (int i = 0; i < array.length(); i++) {
